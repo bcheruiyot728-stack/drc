@@ -889,8 +889,7 @@ function App() {
             </div>
             <div className="hero-tags">
               <span><UiGlyph type="wifi" />4G+</span>
-              <span><UiGlyph type="shieldCheck" />Stable</span>
-              <span><UiGlyph type="spark" />Rapide</span>
+              <span><UiGlyph type="spark" />Activation rapide</span>
             </div>
             <button
               type="button"

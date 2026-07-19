@@ -302,8 +302,9 @@ a {
   align-items: center;
   padding: 7px 12px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(222, 24, 24, 0.14);
+  border: 1px solid rgba(222, 24, 24, 0.34);
+  color: #ffe9e9;
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -347,20 +348,20 @@ a {
   justify-content: center;
   padding: 8px 12px;
   border-radius: 14px;
-  background: rgba(255, 255, 255, 0.05);
-  color: rgba(255, 255, 255, 0.92);
+  background: rgba(222, 24, 24, 0.12);
+  color: #fff1f1;
   font-weight: 600;
   letter-spacing: 0.03em;
   text-transform: none;
   font-size: 0.74rem;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(222, 24, 24, 0.26);
   backdrop-filter: blur(6px);
 }
 
 .hero-tags .ui-glyph {
   width: 15px;
   height: 15px;
-  color: #d7e7ff;
+  color: #ffb0b0;
 }
 
 .hero-cta {
@@ -1421,7 +1422,7 @@ a {
 
   .hero-tags {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 6px;
   }
 
