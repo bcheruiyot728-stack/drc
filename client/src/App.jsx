@@ -1,9 +1,7 @@
 ﻿import { useEffect, useRef, useState } from 'react';
 
-const DEFAULT_PROD_API = 'https://drc-co0e.onrender.com';
-const isLocalHost = typeof window !== 'undefined' && ['localhost', '127.0.0.1'].includes(window.location.hostname);
 const configuredApiBase = (import.meta.env.VITE_API_BASE_URL || '').trim().replace(/\/$/, '');
-const API_BASE_URL = configuredApiBase || (isLocalHost ? '' : DEFAULT_PROD_API);
+const API_BASE_URL = configuredApiBase;
 const apiUrl = (path) => (API_BASE_URL ? `${API_BASE_URL}${path}` : path);
 const apiFetch = (path, options) => fetch(apiUrl(path), options);
 
