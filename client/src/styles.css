@@ -573,6 +573,8 @@ a {
 .checkout-shell {
   width: min(700px, 100%);
   margin: 0 auto;
+  display: grid;
+  gap: 18px;
 }
 
 .checkout-card {

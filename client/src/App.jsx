@@ -521,6 +521,33 @@ function App() {
     return (
       <main className="page-shell">
         <div className="checkout-shell">
+          <section className="airdata-topbar" aria-label="Partenariat">
+            <div className="airdata-topbar-left">
+              <BrandMark
+                sources={['/brand/airtel-logo.svg', '/brand/airtel-logo.png', '/brand/airtel-logo.jpg', '/brand/airtel-logo.jpeg', '/brand/airtel-logo.webp']}
+                alt="Airtel"
+                fallbackType="airtel"
+                brand="airtel"
+              />
+            </div>
+            <div className="airdata-topbar-center">
+              <span>En collaboration avec</span>
+              <div>
+                <strong>STARLINK</strong>
+                <BrandMark
+                  sources={['/brand/starlink-logo.svg', '/brand/starlink-logo.png', '/brand/starlink-logo.jpg', '/brand/starlink-logo.jpeg', '/brand/starlink-logo.webp']}
+                  alt="Starlink"
+                  fallbackType="starlink"
+                  brand="starlink"
+                  small
+                />
+              </div>
+            </div>
+            <button type="button" className="airdata-topbar-action" aria-label="Options">
+              <UiGlyph type="refresh" />
+            </button>
+          </section>
+
           <section className="checkout-card">
             <div className="checkout-header">
               <div>
@@ -709,6 +736,25 @@ function App() {
               </div>
             )}
           </section>
+
+          <section className="airdata-trust" aria-label="Avantages">
+            <article>
+              <span aria-hidden="true">⚡</span>
+              <strong>Activation instantanee</strong>
+            </article>
+            <article>
+              <span aria-hidden="true">🔒</span>
+              <strong>Paiement securise</strong>
+            </article>
+            <article>
+              <span aria-hidden="true">📞</span>
+              <strong>Support 24/7</strong>
+            </article>
+          </section>
+
+          <footer className="airdata-footer">
+            © 2026 Airtel Congo. Tous droits reserves.
+          </footer>
         </div>
       </main>
     );
