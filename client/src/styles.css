@@ -1385,13 +1385,46 @@ a {
   .card-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 10px;
+    gap: 8px;
     overflow: visible;
     padding-bottom: 0;
   }
 
   .offer-card {
     min-width: 0;
+    padding: 14px 10px;
+    border-radius: 14px;
+    gap: 9px;
+  }
+
+  .offer-badge,
+  .offer-charge {
+    padding: 5px 7px;
+    font-size: 0.58rem;
+    letter-spacing: 0.04em;
+  }
+
+  .offer-amount,
+  .offer-value {
+    font-size: clamp(1.25rem, 4.2vw, 1.55rem);
+    letter-spacing: -0.02em;
+  }
+
+  .offer-duration {
+    font-size: 0.74rem;
+    line-height: 1.25;
+  }
+
+  .offer-currency {
+    font-size: 0.78rem;
+  }
+
+  .offer-card button {
+    min-height: 34px;
+    padding: 8px 6px;
+    font-size: 0.66rem;
+    letter-spacing: 0.02em;
+    gap: 5px;
   }
 
   .kit-box {
@@ -1562,18 +1595,34 @@ a {
   }
 
   .offer-card {
-    border-radius: 20px;
-    padding: 18px 16px;
+    border-radius: 12px;
+    padding: 10px 8px;
+    gap: 7px;
   }
 
-  .offer-card {
-    flex: 0 0 88%;
-    min-width: 88%;
+  .card-grid {
+    gap: 7px;
+  }
+
+  .offer-badge,
+  .offer-charge {
+    font-size: 0.52rem;
+    padding: 4px 6px;
   }
 
   .offer-amount,
   .offer-value {
-    font-size: clamp(2rem, 12vw, 2.4rem);
+    font-size: clamp(1.05rem, 4.3vw, 1.28rem);
+  }
+
+  .offer-duration {
+    font-size: 0.66rem;
+  }
+
+  .offer-card button {
+    min-height: 30px;
+    font-size: 0.58rem;
+    padding: 7px 4px;
   }
 
   .checkout-card {
@@ -1752,32 +1801,35 @@ a {
   }
 
   .offer-card {
-    padding: 14px 12px;
-    border-radius: 16px;
-    gap: 12px;
+    padding: 8px 6px;
+    border-radius: 10px;
+    gap: 6px;
   }
 
-  .offer-card {
-    flex: 0 0 92%;
-    min-width: 92%;
+  .card-grid {
+    gap: 6px;
   }
 
   .offer-badge,
   .offer-charge {
-    padding: 6px 9px;
-    font-size: 0.65rem;
+    padding: 3px 5px;
+    font-size: 0.48rem;
   }
 
   .offer-amount,
   .offer-value {
-    font-size: clamp(1.65rem, 11vw, 2rem);
+    font-size: clamp(0.9rem, 4.2vw, 1.05rem);
+  }
+
+  .offer-duration {
+    font-size: 0.58rem;
   }
 
   .offer-card button {
-    min-height: 44px;
-    padding: 12px 0;
-    font-size: 0.83rem;
-    letter-spacing: 0.04em;
+    min-height: 28px;
+    padding: 6px 3px;
+    font-size: 0.5rem;
+    letter-spacing: 0.01em;
   }
 
   .checkout-card {
