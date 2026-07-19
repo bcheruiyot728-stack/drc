@@ -938,6 +938,10 @@ function App() {
           </article>
         </section>
 
+        <footer className="airdata-footer">
+          © 2026 Airtel Congo. Tous droits reserves.
+        </footer>
+
       </div>
     </main>
   );
