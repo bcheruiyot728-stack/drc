@@ -232,6 +232,43 @@ a {
   font-size: 1rem;
 }
 
+.airdata-intro {
+  display: grid;
+  gap: 8px;
+  max-width: 680px;
+}
+
+.airdata-kicker {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.airdata-intro h2 {
+  margin: 0;
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.airdata-intro h2 span {
+  color: #ffd92b;
+}
+
+.airdata-intro p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 62ch;
+}
+
 .hero-copy p {
   margin: 0;
   max-width: 72ch;
@@ -439,6 +476,31 @@ a {
 .offer-card button:hover {
   transform: translateY(-2px);
   box-shadow: 0 18px 32px rgba(222, 24, 24, 0.2);
+}
+
+.airdata-trust {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.airdata-trust article {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.airdata-trust article span {
+  font-size: 1.2rem;
+}
+
+.airdata-trust article strong {
+  font-size: 0.9rem;
+  letter-spacing: 0.03em;
 }
 
 .checkout-shell {
@@ -865,6 +927,10 @@ a {
     grid-template-columns: 1fr;
   }
 
+  .airdata-trust {
+    grid-template-columns: 1fr;
+  }
+
   .card-grid {
     grid-template-columns: repeat(2, minmax(240px, 1fr));
   }
@@ -896,6 +962,10 @@ a {
   .hero-text {
     letter-spacing: 0.08em;
     font-size: 0.92rem;
+  }
+
+  .airdata-intro h2 {
+    font-size: clamp(1.45rem, 8.2vw, 2rem);
   }
 
   .hero-visual {
@@ -1011,6 +1081,15 @@ a {
     font-size: 0.76rem;
   }
 
+  .airdata-kicker {
+    font-size: 0.7rem;
+  }
+
+  .airdata-intro p {
+    font-size: 0.88rem;
+    line-height: 1.45;
+  }
+
   .offer-card {
     border-radius: 20px;
     padding: 18px 16px;
@@ -1112,6 +1191,33 @@ a {
   .hero-text {
     font-size: 0.78rem;
     letter-spacing: 0.05em;
+  }
+
+  .airdata-intro {
+    gap: 6px;
+  }
+
+  .airdata-kicker {
+    padding: 6px 10px;
+    font-size: 0.62rem;
+  }
+
+  .airdata-intro h2 {
+    font-size: clamp(1.15rem, 8.5vw, 1.45rem);
+  }
+
+  .airdata-intro p {
+    font-size: 0.78rem;
+  }
+
+  .airdata-trust article {
+    padding: 10px 9px;
+    border-radius: 12px;
+    gap: 8px;
+  }
+
+  .airdata-trust article strong {
+    font-size: 0.76rem;
   }
 
   .hero-tags span {

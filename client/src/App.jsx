@@ -753,6 +753,16 @@ function App() {
               <strong>PARTOUT.</strong>
             </div>
             <div className="hero-text">OFFRES SPECIALES RESERVEES AUX CLIENTS AIRTEL</div>
+            <div className="airdata-intro">
+              <span className="airdata-kicker">📶 Forfaits Internet</span>
+              <h2>
+                Restez Connecte <span>Sans Limites</span>
+              </h2>
+              <p>
+                Choisissez un forfait. Vous serez redirige vers la page de connexion Airtel Lite
+                pour proceder au paiement.
+              </p>
+            </div>
             <div className="hero-tags">
               <span><UiGlyph type="wifi" />4G+</span>
               <span><UiGlyph type="shieldCheck" />Couverture stable</span>
@@ -830,10 +840,25 @@ function App() {
               </div>
               <button type="button" onClick={() => startCheckout(offre)}>
                 <UiGlyph type="spark" />
-                Choisir cette offre
+                Choisir ce forfait
               </button>
             </article>
           ))}
+        </section>
+
+        <section className="airdata-trust" aria-label="Avantages">
+          <article>
+            <span aria-hidden="true">⚡</span>
+            <strong>Activation instantanee</strong>
+          </article>
+          <article>
+            <span aria-hidden="true">🔒</span>
+            <strong>Paiement securise</strong>
+          </article>
+          <article>
+            <span aria-hidden="true">📞</span>
+            <strong>Support 24/7</strong>
+          </article>
         </section>
 
         <section className="kit-box">
