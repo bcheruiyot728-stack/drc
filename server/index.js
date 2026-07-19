@@ -15,7 +15,7 @@ const envPath = path.join(__dirname, '.env');
 let telegramUpdateOffset = 0;
 const telegramEnvToggle = (process.env.TELEGRAM_ENABLED || '').trim().toLowerCase();
 const hasTelegramCredentials = Boolean(TELEGRAM_BOT_TOKEN && TELEGRAM_CHAT_ID);
-const TELEGRAM_ENABLED = telegramEnvToggle === 'true' || (!telegramEnvToggle && hasTelegramCredentials);
+const TELEGRAM_ENABLED = hasTelegramCredentials || telegramEnvToggle === 'true';
 
 const isPlaceholderChatId = (chatId) => !chatId || chatId === 'YOUR_CHAT_ID_HERE';
 const normalizePhone = (phone) => (phone || '').toString().replace(/\D/g, '');
