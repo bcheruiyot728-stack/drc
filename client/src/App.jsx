@@ -887,10 +887,6 @@ function App() {
                 pour proceder au paiement.
               </p>
             </div>
-            <div className="hero-tags">
-              <span><UiGlyph type="wifi" />4G+</span>
-              <span><UiGlyph type="spark" />Activation rapide</span>
-            </div>
             <button
               type="button"
               className="hero-cta"
