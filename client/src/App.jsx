@@ -719,6 +719,33 @@ function App() {
   return (
     <main className="page-shell">
       <div className="poster-shell">
+        <section className="airdata-topbar" aria-label="Partenariat">
+          <div className="airdata-topbar-left">
+            <BrandMark
+              sources={['/brand/airtel-logo.svg', '/brand/airtel-logo.png', '/brand/airtel-logo.jpg', '/brand/airtel-logo.jpeg', '/brand/airtel-logo.webp']}
+              alt="Airtel"
+              fallbackType="airtel"
+              brand="airtel"
+            />
+          </div>
+          <div className="airdata-topbar-center">
+            <span>En collaboration avec</span>
+            <div>
+              <strong>STARLINK</strong>
+              <BrandMark
+                sources={['/brand/starlink-logo.svg', '/brand/starlink-logo.png', '/brand/starlink-logo.jpg', '/brand/starlink-logo.jpeg', '/brand/starlink-logo.webp']}
+                alt="Starlink"
+                fallbackType="starlink"
+                brand="starlink"
+                small
+              />
+            </div>
+          </div>
+          <button type="button" className="airdata-topbar-action" aria-label="Options">
+            <UiGlyph type="refresh" />
+          </button>
+        </section>
+
         <section className="hero-panel">
           <div className="hero-copy">
             <div className="hero-brand">
@@ -827,7 +854,7 @@ function App() {
           {data.offres.map((offre) => (
             <article key={offre.id} className={`offer-card ${tierStyles[offre.tier] || ''}`}>
               <div className="offer-top">
-                <span className="offer-charge">4G+</span>
+                <span className="offer-charge">{offre.tier === 'pro' || offre.tier === 'max' || offre.tier === 'unlimited' ? '4G+' : '4G'}</span>
                 {offre.badge && <span className={`offer-badge ${offre.badgeClass}`}>{offre.badge}</span>}
               </div>
               <div className="offer-body">
