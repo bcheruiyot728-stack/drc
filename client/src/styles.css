@@ -57,6 +57,73 @@ a {
   gap: 28px;
 }
 
+.poster-shell-simple {
+  width: min(980px, 100%);
+  gap: 20px;
+}
+
+.landing-simple-header {
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+  text-align: center;
+}
+
+.landing-logo-block .brand-mark-shell {
+  width: 180px;
+  height: 58px;
+  border: none;
+  box-shadow: none;
+}
+
+.landing-simple-header p {
+  margin: 0;
+  color: var(--lp-text-soft);
+  font-size: 0.92rem;
+}
+
+.landing-simple-header strong {
+  color: var(--lp-text);
+  letter-spacing: 0.04em;
+}
+
+.landing-simple-hero {
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+  text-align: center;
+  padding: 12px 0 4px;
+}
+
+.landing-simple-kicker {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: var(--lp-accent-soft);
+  border: 1px solid var(--lp-accent-border);
+  color: #ffe9e9;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.landing-simple-hero h1 {
+  margin: 0;
+  color: var(--lp-text);
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.05;
+}
+
+.landing-simple-hero p {
+  margin: 0;
+  max-width: 58ch;
+  color: var(--lp-text-soft);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
 .airdata-topbar {
   display: grid;
   grid-template-columns: auto 1fr auto;
@@ -1293,17 +1360,16 @@ a {
 }
 
 @media (max-width: 1080px) {
-  .hero-panel,
   .feature-grid {
     grid-template-columns: 1fr;
   }
 
   .airdata-trust {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .card-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .checkout-shell {
@@ -1312,24 +1378,6 @@ a {
 }
 
 @media (max-width: 760px) {
-  .airdata-topbar {
-    grid-template-columns: 1fr;
-    justify-items: center;
-    text-align: center;
-    gap: 8px;
-    padding: 10px;
-    border-radius: 14px;
-  }
-
-  .airdata-topbar-left .brand-mark-shell {
-    width: 88px;
-    height: 30px;
-  }
-
-  .airdata-topbar-action {
-    display: none;
-  }
-
   .page-shell {
     padding: 16px 10px 28px;
   }
@@ -1338,47 +1386,36 @@ a {
     gap: 14px;
   }
 
-  .hero-panel {
-    grid-template-columns: 1fr;
-    padding: 14px 12px;
-    gap: 12px;
-    border-radius: 18px;
+  .poster-shell-simple {
+    gap: 16px;
   }
 
-  .hero-copy {
-    gap: 10px;
+  .landing-logo-block .brand-mark-shell {
+    width: 148px;
+    height: 48px;
   }
 
-  .hero-brand,
-  .hero-brandline,
-  .hero-brand-icons {
+  .landing-simple-header p {
+    font-size: 0.8rem;
+  }
+
+  .landing-simple-hero {
     gap: 8px;
+    padding: 6px 0 2px;
   }
 
-  .hero-title {
-    font-size: clamp(1.9rem, 8vw, 2.4rem);
-  }
-
-  .hero-subtitle {
-    padding: 8px 12px;
-    min-width: 0;
-    font-size: 0.7rem;
-    letter-spacing: 0.08em;
-  }
-
-  .hero-note {
+  .landing-simple-kicker {
     font-size: 0.66rem;
-    letter-spacing: 0.08em;
+    padding: 6px 10px;
   }
 
-  .hero-line span,
-  .hero-line strong {
-    font-size: clamp(1.25rem, 6vw, 1.7rem);
+  .landing-simple-hero h1 {
+    font-size: clamp(1.35rem, 7vw, 1.8rem);
   }
 
-  .hero-text {
-    letter-spacing: 0.05em;
-    font-size: 0.72rem;
+  .landing-simple-hero p {
+    font-size: 0.8rem;
+    line-height: 1.4;
   }
 
   .hero-cta {
@@ -1388,65 +1425,9 @@ a {
     letter-spacing: 0.04em;
   }
 
-  .airdata-intro h2 {
-    font-size: clamp(1.2rem, 6.2vw, 1.55rem);
-  }
-
-  .airdata-intro p {
-    font-size: 0.74rem;
-    line-height: 1.35;
-  }
-
-  .hero-visual {
-    min-height: 150px;
-    border-radius: 16px;
-    background: linear-gradient(180deg, #07111d 0%, #091522 100%);
-  }
-
-  .hero-panners {
-    display: none;
-  }
-
-  .hero-scene {
-    opacity: 0.38;
-    transform: scale(1.08) translateY(6px);
-    transform-origin: center;
-  }
-
-  .hero-visual::after {
-    content: 'STARLINK x AIRTEL';
-    position: absolute;
-    left: 12px;
-    right: 12px;
-    bottom: 12px;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 32px;
-    border-radius: 999px;
-    background: rgba(7, 18, 37, 0.82);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: rgba(255, 255, 255, 0.88);
-    font-size: 0.64rem;
-    letter-spacing: 0.14em;
-    font-weight: 700;
-    text-transform: uppercase;
-    backdrop-filter: blur(6px);
-  }
-
-  .brand-mark-shell {
-    width: 100px;
-    height: 34px;
-  }
-
-  .brand-mark-shell-small {
-    width: 80px;
-    height: 28px;
-  }
-
   .card-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 8px;
     overflow: visible;
     padding-bottom: 0;
@@ -1490,7 +1471,7 @@ a {
   }
 
   .airdata-trust {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 7px;
   }
 
@@ -1508,78 +1489,6 @@ a {
   .airdata-trust article strong {
     font-size: 0.58rem;
     line-height: 1.15;
-  }
-
-  .kit-box {
-    padding: 14px 12px;
-    gap: 10px;
-    border-radius: 16px;
-  }
-
-  .kit-hero {
-    gap: 8px;
-  }
-
-  .kit-tag,
-  .kit-box small {
-    padding: 6px 10px;
-    font-size: 0.62rem;
-    letter-spacing: 0.05em;
-  }
-
-  .kit-name {
-    font-size: clamp(1.1rem, 5vw, 1.4rem);
-  }
-
-  .kit-info {
-    gap: 4px;
-    font-size: 0.72rem;
-  }
-
-  .kit-price-block {
-    justify-content: flex-start;
-  }
-
-  .kit-price-block span:last-child {
-    font-size: clamp(1.6rem, 8vw, 2rem);
-  }
-
-  .kit-banner {
-    padding: 10px 12px;
-    border-radius: 10px;
-    font-size: 0.68rem;
-    line-height: 1.25;
-  }
-
-  .feature-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 8px;
-  }
-
-  .feature-grid article {
-    padding: 10px 8px;
-    border-radius: 12px;
-    gap: 8px;
-  }
-
-  .feature-icon {
-    min-width: 30px;
-    min-height: 30px;
-  }
-
-  .feature-icon svg {
-    width: 16px;
-    height: 16px;
-  }
-
-  .feature-grid strong {
-    font-size: 0.66rem;
-    letter-spacing: 0.04em;
-  }
-
-  .feature-grid span {
-    font-size: 0.66rem;
-    line-height: 1.2;
   }
 
   .checkout-card {
@@ -1693,30 +1602,16 @@ a {
     gap: 16px;
   }
 
-  .hero-panel {
-    padding: 18px 14px;
-    border-radius: 22px;
-  }
-
-  .airdata-kicker {
-    font-size: 0.7rem;
-  }
-
-  .airdata-intro p {
-    font-size: 0.88rem;
-    line-height: 1.45;
-  }
-
   .airdata-footer {
     font-size: 0.8rem;
   }
 
-  .airdata-topbar-center span {
-    font-size: 0.74rem;
+  .landing-simple-hero h1 {
+    font-size: clamp(1.2rem, 7vw, 1.5rem);
   }
 
-  .airdata-topbar-center strong {
-    font-size: 0.82rem;
+  .landing-simple-hero p {
+    font-size: 0.74rem;
   }
 
   .card-grid {
@@ -1754,23 +1649,6 @@ a {
     min-height: 30px;
     font-size: 0.58rem;
     padding: 7px 4px;
-  }
-
-  .kit-box {
-    padding: 12px 10px;
-  }
-
-  .feature-grid {
-    gap: 7px;
-  }
-
-  .feature-grid article {
-    padding: 8px 6px;
-  }
-
-  .feature-grid strong,
-  .feature-grid span {
-    font-size: 0.6rem;
   }
 
   .checkout-card {
@@ -1856,98 +1734,32 @@ a {
     letter-spacing: 0.04em;
   }
 
-  .hero-subtitle {
-    min-width: 0;
-    padding: 8px 12px;
+
+  .landing-logo-block .brand-mark-shell {
+    width: 132px;
+    height: 42px;
+  }
+
+  .landing-simple-header p {
     font-size: 0.72rem;
-    letter-spacing: 0.08em;
   }
 
-  .hero-note {
-    font-size: 0.7rem;
-    letter-spacing: 0.08em;
+  .landing-simple-kicker {
+    font-size: 0.58rem;
+    padding: 5px 8px;
   }
 
-  .brand-badge {
+  .landing-simple-hero h1 {
+    font-size: clamp(1.05rem, 7vw, 1.28rem);
+  }
+
+  .landing-simple-hero p {
     font-size: 0.68rem;
-    padding: 8px 10px;
-  }
-
-  .brand-mark-shell {
-    width: 82px;
-    height: 28px;
-  }
-
-  .brand-mark-shell-small {
-    width: 68px;
-    height: 24px;
-  }
-
-  .hero-panner {
-    font-size: 0.64rem;
-    letter-spacing: 0.03em;
-    padding: 6px 10px;
-  }
-
-  .hero-panner span {
-    white-space: normal;
-  }
-
-  .hero-line {
-    gap: 8px;
-  }
-
-  .hero-line span,
-  .hero-line strong {
-    font-size: clamp(1.35rem, 9vw, 1.75rem);
-  }
-
-  .hero-text {
-    font-size: 0.78rem;
-    letter-spacing: 0.05em;
-  }
-
-  .airdata-intro {
-    gap: 6px;
-  }
-
-  .airdata-kicker {
-    padding: 6px 10px;
-    font-size: 0.62rem;
-  }
-
-  .airdata-intro h2 {
-    font-size: clamp(1.15rem, 8.5vw, 1.45rem);
-  }
-
-  .airdata-intro p {
-    font-size: 0.78rem;
-  }
-
-  .airdata-trust article {
-    padding: 10px 9px;
-    border-radius: 12px;
-    gap: 8px;
   }
 
   .airdata-trust article strong {
-    font-size: 0.76rem;
+    font-size: 0.48rem;
   }
-
-  .airdata-footer {
-    font-size: 0.74rem;
-  }
-
-  .hero-tags span {
-    padding: 8px 10px;
-    font-size: 0.68rem;
-  }
-
-  .hero-visual {
-    min-height: 180px;
-    border-radius: 16px;
-  }
-
   .hero-scene {
     opacity: 0.28;
     transform: scale(1.12) translateY(8px);
@@ -2003,19 +1815,6 @@ a {
     letter-spacing: 0.01em;
   }
 
-  .kit-name {
-    font-size: 1rem;
-  }
-
-  .kit-info,
-  .kit-banner {
-    font-size: 0.58rem;
-  }
-
-  .feature-grid strong,
-  .feature-grid span {
-    font-size: 0.54rem;
-  }
 
   .checkout-card {
     padding: 14px 10px;

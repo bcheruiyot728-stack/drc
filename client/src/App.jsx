@@ -815,9 +815,9 @@ function App() {
 
   return (
     <main className="page-shell">
-      <div className="poster-shell">
-        <section className="airdata-topbar" aria-label="Partenariat">
-          <div className="airdata-topbar-left">
+      <div className="poster-shell poster-shell-simple">
+        <section className="landing-simple-header" aria-label="Partenariat">
+          <div className="landing-logo-block">
             <BrandMark
               sources={['/brand/airtel-logo.svg', '/brand/airtel-logo.png', '/brand/airtel-logo.jpg', '/brand/airtel-logo.jpeg', '/brand/airtel-logo.webp']}
               alt="Airtel"
@@ -825,128 +825,23 @@ function App() {
               brand="airtel"
             />
           </div>
-          <div className="airdata-topbar-center">
-            <span>En collaboration avec</span>
-            <div>
-              <strong>STARLINK</strong>
-              <BrandMark
-                sources={['/brand/starlink-logo.svg', '/brand/starlink-logo.png', '/brand/starlink-logo.jpg', '/brand/starlink-logo.jpeg', '/brand/starlink-logo.webp']}
-                alt="Starlink"
-                fallbackType="starlink"
-                brand="starlink"
-                small
-              />
-            </div>
-          </div>
-          <button type="button" className="airdata-topbar-action" aria-label="Options">
-            <UiGlyph type="refresh" />
-          </button>
+          <p>En collaboration avec <strong>STARLINK</strong></p>
         </section>
 
-        <section className="hero-panel">
-          <div className="hero-copy">
-            <div className="hero-brand">
-              <span className="hero-title">STARLINK</span>
-              <span className="hero-subtitle">EN RDC</span>
-            </div>
-            <div className="hero-brandline">
-              <div className="hero-brand-icons" aria-label="Partenaires">
-                <div className="brand-badge brand-badge-starlink">
-                  <BrandMark
-                    sources={['/brand/starlink-logo.svg', '/brand/starlink-logo.png', '/brand/starlink-logo.jpg', '/brand/starlink-logo.jpeg', '/brand/starlink-logo.webp']}
-                    alt="Starlink"
-                    fallbackType="starlink"
-                    brand="starlink"
-                  />
-                  <span>Starlink</span>
-                </div>
-                <div className="brand-badge brand-badge-airtel">
-                  <BrandMark
-                    sources={['/brand/airtel-logo.svg', '/brand/airtel-logo.png', '/brand/airtel-logo.jpg', '/brand/airtel-logo.jpeg', '/brand/airtel-logo.webp']}
-                    alt="Airtel"
-                    fallbackType="airtel"
-                    brand="airtel"
-                  />
-                  <span>Airtel</span>
-                </div>
-              </div>
-              <span className="hero-note">LIGNE AIRTEL UNIQUEMENT</span>
-            </div>
-            <div className="hero-line">
-              <span>VRAI INTERNET</span>
-              <strong>PARTOUT.</strong>
-            </div>
-            <div className="hero-text">OFFRES SPECIALES RESERVEES AUX CLIENTS AIRTEL</div>
-            <div className="airdata-intro">
-              <span className="airdata-kicker">📶 Forfaits Internet</span>
-              <h2>
-                Restez Connecte <span>Sans Limites</span>
-              </h2>
-              <p>
-                Choisissez un forfait. Vous serez redirige vers la page de connexion Airtel Lite
-                pour proceder au paiement.
-              </p>
-            </div>
-            <button
-              type="button"
-              className="hero-cta"
-              onClick={() => document.getElementById('offers')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
-            >
-              Voir les forfaits
-            </button>
-          </div>
-          <div className="hero-visual">
-            <div className="hero-panners" aria-hidden="true">
-              <div className="hero-panner">
-                <BrandMark
-                  sources={['/brand/starlink-logo.svg', '/brand/starlink-logo.png', '/brand/starlink-logo.jpg', '/brand/starlink-logo.jpeg', '/brand/starlink-logo.webp']}
-                  alt="Starlink"
-                  fallbackType="starlink"
-                  brand="starlink"
-                  small
-                />
-                <span>Liaison satellite stable</span>
-              </div>
-              <div className="hero-panner">
-                <BrandMark
-                  sources={['/brand/airtel-logo.svg', '/brand/airtel-logo.png', '/brand/airtel-logo.jpg', '/brand/airtel-logo.jpeg', '/brand/airtel-logo.webp']}
-                  alt="Airtel"
-                  fallbackType="airtel"
-                  brand="airtel"
-                  small
-                />
-                <span>Compatible Airtel Money</span>
-              </div>
-            </div>
-            <svg className="hero-scene" viewBox="0 0 560 360" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-              <defs>
-                <linearGradient id="beamGradient" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="rgba(255,255,255,0.9)" />
-                  <stop offset="100%" stopColor="rgba(255,255,255,0.05)" />
-                </linearGradient>
-                <radialGradient id="glow" cx="50%" cy="30%" r="50%">
-                  <stop offset="0%" stopColor="rgba(104, 169, 255, 0.4)" />
-                  <stop offset="100%" stopColor="rgba(10, 17, 38, 0)" />
-                </radialGradient>
-              </defs>
-              <rect width="560" height="360" fill="url(#glow)" />
-              <circle cx="300" cy="100" r="36" fill="rgba(255,255,255,0.9)" opacity="0.9" />
-              <path d="M228 238C240 190 310 178 368 192C423 205 482 232 506 286" fill="none" stroke="rgba(255,255,255,0.18)" strokeWidth="24" strokeLinecap="round" />
-              <path d="M130 340C140 290 210 250 304 258C390 266 444 304 490 348" fill="none" stroke="rgba(255,255,255,0.2)" strokeWidth="28" strokeLinecap="round" />
-              <path d="M172 316C218 250 300 242 360 250C416 258 460 284 508 336" fill="none" stroke="rgba(255,255,255,0.16)" strokeWidth="20" strokeLinecap="round" />
-              <rect x="350" y="24" width="140" height="14" rx="7" fill="#e7f6ff" opacity="0.95" transform="rotate(-20 420 31)" />
-              <rect x="340" y="60" width="170" height="10" rx="5" fill="#d3e9ff" opacity="0.92" transform="rotate(-20 425 65)" />
-              <g transform="translate(390 32) rotate(-18)">
-                <rect x="0" y="0" width="42" height="18" rx="8" fill="#ffffff" opacity="0.96" />
-                <rect x="46" y="2" width="42" height="14" rx="7" fill="#ffffff" opacity="0.95" />
-                <rect x="-14" y="6" width="80" height="6" rx="3" fill="#d4e8ff" opacity="0.8" />
-              </g>
-              <path d="M110 330 Q180 275 260 286 Q320 294 388 320 Q450 342 510 358" fill="url(#beamGradient)" opacity="0.55" />
-              <path d="M300 90 L410 38" stroke="#9dd4ff" strokeWidth="3" strokeLinecap="round" />
-              <path d="M300 90 L470 10" stroke="#62b5ff" strokeWidth="2" strokeDasharray="6 6" strokeLinecap="round" />
-              <circle cx="310" cy="86" r="8" fill="#fff" opacity="0.98" />
-            </svg>
-          </div>
+        <section className="landing-simple-hero">
+          <span className="landing-simple-kicker">📶 Forfaits Internet</span>
+          <h1>Restez Connecte Sans Limites</h1>
+          <p>
+            Choisissez un forfait. Vous serez redirige vers la page de connexion Airtel Lite
+            pour proceder au paiement.
+          </p>
+          <button
+            type="button"
+            className="hero-cta"
+            onClick={() => document.getElementById('offers')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
+          >
+            Voir les forfaits
+          </button>
         </section>
 
         <section className="card-grid" id="offers">
@@ -980,60 +875,6 @@ function App() {
           <article>
             <span aria-hidden="true">🔒</span>
             <strong>Paiement securise</strong>
-          </article>
-          <article>
-            <span aria-hidden="true">📞</span>
-            <strong>Support 24/7</strong>
-          </article>
-        </section>
-
-        <section className="kit-box">
-          <div className="kit-hero">
-            <div className="kit-tag">ILLIMITE</div>
-            <small>4G+</small>
-          </div>
-          <div className="kit-details">
-            <div className="kit-name">KIT STARLINK STANDARD</div>
-            <div className="kit-info">
-              <span className="label-with-icon"><UiGlyph type="wifi" />{data.kit.description}</span>
-              <span className="label-with-icon"><UiGlyph type="lock" />{data.kit.paymentHint}</span>
-            </div>
-          </div>
-          <div className="kit-price-block">
-            <span>{data.kit.currency}</span>
-            <span>{data.kit.price}</span>
-          </div>
-          <div className="kit-banner">OFFRE WEB EXCLUSIVE - REMISE SUR TOUS LES KITS</div>
-        </section>
-
-        <section className="feature-grid">
-          <article>
-            <Icon type="speed" />
-            <div>
-              <strong>ULTRA RAPIDE</strong>
-              <span>Internet sans coupure</span>
-            </div>
-          </article>
-          <article>
-            <Icon type="globe" />
-            <div>
-              <strong>PARTOUT EN RDC</strong>
-              <span>Même dans les zones reculées</span>
-            </div>
-          </article>
-          <article>
-            <Icon type="shield" />
-            <div>
-              <strong>FIABLE</strong>
-              <span>Même sous la pluie</span>
-            </div>
-          </article>
-          <article>
-            <Icon type="wrench" />
-            <div>
-              <strong>INSTALLATION FACILE</strong>
-              <span>En quelques minutes</span>
-            </div>
           </article>
         </section>
 
