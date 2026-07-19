@@ -2,14 +2,14 @@ module.exports = {
   name: 'Kit Starlink Standard',
   price: 590,
   currency: '$',
-  paymentHint: 'Easy payment via Airtel Money',
-  description: 'Unlimited internet • Across DRC',
+  paymentHint: 'Paiement facile via Airtel Money',
+  description: 'Internet illimite • Partout en RDC',
   features: [
-    'Ultra fast - Internet without interruption',
-    'Across DRC - Even in remote areas',
-    'Reliable - Even in the rain',
-    'Easy installation - In just a few minutes'
+    'Ultra rapide - Internet sans interruption',
+    'Partout en RDC - Meme dans les zones reculees',
+    'Fiable - Meme sous la pluie',
+    'Installation facile - En quelques minutes'
   ],
-  exclusiveOffer: 'Exclusive web offer - discount on all kits',
+  exclusiveOffer: 'Offre web exclusive - remise sur tous les kits',
   bookingUrl: 'https://bbbb.onrender.com'
 };
