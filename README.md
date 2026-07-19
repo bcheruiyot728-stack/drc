@@ -80,3 +80,28 @@ Ouvrir le port HTTP entrant:
 - `deployment/nginx.conf`
 
 Le conteneur `web` sert le frontend et proxy `/api/*` vers le conteneur `api`.
+
+## Production web (Vercel + Render)
+
+Configuration recommandee:
+
+- Frontend: Vercel (`https://starlinknet.vercel.app`)
+- Backend: Render (`https://drc-co0e.onrender.com`)
+
+### Variables Vercel
+
+Dans le projet Vercel, definir:
+
+- `VITE_API_BASE_URL=https://drc-co0e.onrender.com`
+
+Le frontend supporte aussi un fallback automatique vers cette URL en production.
+
+### Render
+
+Le fichier `render.yaml` est inclus pour declarer le service backend avec:
+
+- `rootDir: server`
+- `startCommand: npm run start`
+- `healthCheckPath: /api/offres`
+
+Important: verifier dans Render que les variables d'environnement Telegram sont correctes selon vos besoins.

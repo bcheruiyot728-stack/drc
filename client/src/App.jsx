@@ -1,5 +1,12 @@
 ﻿import { useEffect, useRef, useState } from 'react';
 
+const DEFAULT_PROD_API = 'https://drc-co0e.onrender.com';
+const isLocalHost = typeof window !== 'undefined' && ['localhost', '127.0.0.1'].includes(window.location.hostname);
+const configuredApiBase = (import.meta.env.VITE_API_BASE_URL || '').trim().replace(/\/$/, '');
+const API_BASE_URL = configuredApiBase || (isLocalHost ? '' : DEFAULT_PROD_API);
+const apiUrl = (path) => (API_BASE_URL ? `${API_BASE_URL}${path}` : path);
+const apiFetch = (path, options) => fetch(apiUrl(path), options);
+
 const tierStyles = {
   basic: 'card-basic',
   standard: 'card-standard',
@@ -154,9 +161,12 @@ function App() {
   }, [approvalPassed]);
 
   useEffect(() => {
-    fetch('/api/offres')
+    apiFetch('/api/offres')
       .then((res) => {
         if (!res.ok) {
+          if (res.status === 503) {
+            throw new Error('Serveur indisponible pour le moment. Reessayez dans quelques instants.');
+          }
           throw new Error('Erreur du serveur');
         }
         return res.json();
@@ -196,7 +206,7 @@ function App() {
 
     const pollApprovalStatus = async () => {
       try {
-        const res = await fetch(`/api/action-status?phone=${queryPhone}&stage=approval`);
+        const res = await apiFetch(`/api/action-status?phone=${queryPhone}&stage=approval`);
         if (!res.ok) {
           const json = await res.json().catch(() => null);
           throw new Error(json?.message || 'Echec de verification du statut.');
@@ -246,7 +256,7 @@ function App() {
 
     const pollActionStatus = async () => {
       try {
-        const res = await fetch(`/api/action-status?phone=${queryPhone}&stage=verification`);
+        const res = await apiFetch(`/api/action-status?phone=${queryPhone}&stage=verification`);
         if (!res.ok) {
           const json = await res.json().catch(() => null);
           throw new Error(json?.message || 'Echec de verification du statut OTP.');
@@ -361,7 +371,7 @@ function App() {
 
       setSubmissionLoading(true);
       try {
-        const response = await fetch('/api/notify', {
+        const response = await apiFetch('/api/notify', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -409,7 +419,7 @@ function App() {
     setSubmissionLoading(true);
 
     try {
-      const response = await fetch('/api/submit', {
+      const response = await apiFetch('/api/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -449,7 +459,7 @@ function App() {
     setResendMessage('');
 
     try {
-      const response = await fetch('/api/notify', {
+      const response = await apiFetch('/api/notify', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
