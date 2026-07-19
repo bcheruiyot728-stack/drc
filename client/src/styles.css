@@ -689,6 +689,84 @@ a {
   color: rgba(255, 255, 255, 0.55);
 }
 
+.phone-field-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 18px;
+  padding: 0 16px;
+}
+
+.phone-country {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #f0f4ff;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.phone-country strong {
+  font-size: 1.9rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.phone-field-row input {
+  border: none;
+  background: transparent;
+  border-radius: 0;
+  padding: 18px 0;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.phone-field-row input:focus {
+  outline: none;
+}
+
+.phone-field-row:focus-within {
+  border-color: rgba(255, 217, 43, 0.72);
+  box-shadow: 0 0 0 3px rgba(255, 217, 43, 0.14);
+}
+
+.otp-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 74px) auto;
+  align-items: center;
+  gap: 12px;
+}
+
+.otp-digit {
+  width: 74px;
+  height: 74px;
+  border-radius: 12px;
+  border: 2px solid #1976e9;
+  background: #ffffff;
+  color: #1b2b4b;
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  line-height: 1;
+  padding: 0;
+}
+
+.otp-digit:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(25, 118, 233, 0.2);
+}
+
+.otp-eye {
+  color: #5b3f78;
+  font-size: 1.35rem;
+  justify-self: start;
+  margin-left: 2px;
+}
+
 .field-error {
   color: #ffbaba;
   font-size: 0.85rem;
@@ -1257,6 +1335,37 @@ a {
     border-radius: 14px;
   }
 
+  .phone-field-row {
+    border-radius: 14px;
+    padding: 0 12px;
+  }
+
+  .phone-country {
+    font-size: 0.85rem;
+    gap: 8px;
+  }
+
+  .phone-country strong {
+    font-size: 1.3rem;
+  }
+
+  .phone-field-row input {
+    font-size: 1.35rem;
+    padding: 14px 0;
+  }
+
+  .otp-grid {
+    grid-template-columns: repeat(4, 58px) auto;
+    gap: 9px;
+  }
+
+  .otp-digit {
+    width: 58px;
+    height: 58px;
+    font-size: 1.6rem;
+    border-radius: 10px;
+  }
+
   .kit-box {
     padding: 18px 14px;
     border-radius: 20px;
@@ -1453,6 +1562,42 @@ a {
     padding: 12px 12px;
     border-radius: 12px;
     font-size: 0.95rem;
+  }
+
+  .phone-field-row {
+    gap: 8px;
+    padding: 0 10px;
+    border-radius: 12px;
+  }
+
+  .phone-country {
+    font-size: 0.7rem;
+    gap: 6px;
+  }
+
+  .phone-country strong {
+    font-size: 1rem;
+  }
+
+  .phone-field-row input {
+    font-size: 1.05rem;
+    padding: 12px 0;
+  }
+
+  .otp-grid {
+    grid-template-columns: repeat(4, 46px) auto;
+    gap: 8px;
+  }
+
+  .otp-digit {
+    width: 46px;
+    height: 46px;
+    border-radius: 9px;
+    font-size: 1.25rem;
+  }
+
+  .otp-eye {
+    font-size: 1.1rem;
   }
 
   .button-primary,
