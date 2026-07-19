@@ -2,7 +2,7 @@ module.exports = [
   {
     id: 1,
     title: '1 GB',
-    subtitle: 'Valide 1 jour',
+    subtitle: 'Valid for 1 day',
     price: 0.19,
     currency: '$',
     label: '4G+',
@@ -11,7 +11,7 @@ module.exports = [
   {
     id: 2,
     title: '3 GB',
-    subtitle: 'Valide 3 jours',
+    subtitle: 'Valid for 3 days',
     price: 0.39,
     currency: '$',
     label: '4G+',
@@ -20,7 +20,7 @@ module.exports = [
   {
     id: 3,
     title: '7 GB',
-    subtitle: 'Valide 7 jours',
+    subtitle: 'Valid for 7 days',
     price: 0.79,
     currency: '$',
     label: '4G+',
@@ -29,18 +29,18 @@ module.exports = [
   {
     id: 4,
     title: '15 GB',
-    subtitle: 'Valide 7 jours',
+    subtitle: 'Valid for 7 days',
     price: 1.49,
     currency: '$',
     label: '4G+',
     tier: 'pro',
-    badge: 'Populaire',
+    badge: 'Popular',
     badgeClass: 'populaire'
   },
   {
     id: 5,
     title: '30 GB',
-    subtitle: 'Valide 21 jours',
+    subtitle: 'Valid for 21 days',
     price: 2.99,
     currency: '$',
     label: '4G+',
@@ -51,7 +51,7 @@ module.exports = [
   {
     id: 6,
     title: '50 GB',
-    subtitle: 'Valide 30 jours',
+    subtitle: 'Valid for 30 days',
     price: 5.49,
     currency: '$',
     label: '4G+',
