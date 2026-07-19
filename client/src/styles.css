@@ -1307,65 +1307,94 @@ a {
 }
 
 @media (max-width: 760px) {
-    .airdata-topbar {
-      grid-template-columns: 1fr;
-      justify-items: center;
-      text-align: center;
-      gap: 10px;
-      padding: 12px;
-    }
+  .airdata-topbar {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+    gap: 8px;
+    padding: 10px;
+    border-radius: 14px;
+  }
 
-    .airdata-topbar-left .brand-mark-shell {
-      width: 98px;
-      height: 32px;
-    }
+  .airdata-topbar-left .brand-mark-shell {
+    width: 88px;
+    height: 30px;
+  }
 
-    .airdata-topbar-action {
-      display: none;
-    }
+  .airdata-topbar-action {
+    display: none;
+  }
 
   .page-shell {
-    padding: 24px 16px 40px;
+    padding: 16px 10px 28px;
+  }
+
+  .poster-shell {
+    gap: 14px;
   }
 
   .hero-panel {
     grid-template-columns: 1fr;
-    padding: 20px 16px;
-    gap: 16px;
-    border-radius: 24px;
+    padding: 14px 12px;
+    gap: 12px;
+    border-radius: 18px;
   }
 
   .hero-copy {
-    gap: 14px;
+    gap: 10px;
+  }
+
+  .hero-brand,
+  .hero-brandline,
+  .hero-brand-icons {
+    gap: 8px;
   }
 
   .hero-title {
-    font-size: clamp(2.4rem, 9vw, 3.2rem);
+    font-size: clamp(1.9rem, 8vw, 2.4rem);
+  }
+
+  .hero-subtitle {
+    padding: 8px 12px;
+    min-width: 0;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+  }
+
+  .hero-note {
+    font-size: 0.66rem;
+    letter-spacing: 0.08em;
   }
 
   .hero-line span,
   .hero-line strong {
-    font-size: clamp(1.75rem, 8vw, 2.4rem);
+    font-size: clamp(1.25rem, 6vw, 1.7rem);
   }
 
   .hero-text {
-    letter-spacing: 0.08em;
-    font-size: 0.92rem;
+    letter-spacing: 0.05em;
+    font-size: 0.72rem;
   }
 
   .hero-cta {
     width: 100%;
-    min-height: 48px;
-    font-size: 0.82rem;
-    letter-spacing: 0.06em;
+    min-height: 42px;
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
   }
 
   .airdata-intro h2 {
-    font-size: clamp(1.45rem, 8.2vw, 2.15rem);
+    font-size: clamp(1.2rem, 6.2vw, 1.55rem);
+  }
+
+  .airdata-intro p {
+    font-size: 0.74rem;
+    line-height: 1.35;
   }
 
   .hero-visual {
-    min-height: 180px;
+    min-height: 150px;
+    border-radius: 16px;
   }
 
   .hero-panners {
@@ -1380,6 +1409,25 @@ a {
   .brand-mark-shell-small {
     width: 80px;
     height: 28px;
+  }
+
+  .hero-tags {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
+  }
+
+  .hero-tags span {
+    width: auto;
+    min-height: 42px;
+    justify-content: center;
+    text-align: center;
+    padding: 7px 5px;
+    font-size: 0.54rem;
+    line-height: 1.15;
+    white-space: normal;
+    letter-spacing: 0.03em;
+    border-radius: 12px;
   }
 
   .card-grid {
@@ -1427,12 +1475,51 @@ a {
     gap: 5px;
   }
 
+  .airdata-trust {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 7px;
+  }
+
+  .airdata-trust article {
+    padding: 8px 6px;
+    border-radius: 10px;
+    gap: 6px;
+    align-items: flex-start;
+  }
+
+  .airdata-trust article span {
+    font-size: 0.9rem;
+  }
+
+  .airdata-trust article strong {
+    font-size: 0.58rem;
+    line-height: 1.15;
+  }
+
   .kit-box {
-    padding: 26px;
+    padding: 14px 12px;
+    gap: 10px;
+    border-radius: 16px;
+  }
+
+  .kit-hero {
+    gap: 8px;
+  }
+
+  .kit-tag,
+  .kit-box small {
+    padding: 6px 10px;
+    font-size: 0.62rem;
+    letter-spacing: 0.05em;
   }
 
   .kit-name {
-    font-size: clamp(1.5rem, 7vw, 2rem);
+    font-size: clamp(1.1rem, 5vw, 1.4rem);
+  }
+
+  .kit-info {
+    gap: 4px;
+    font-size: 0.72rem;
   }
 
   .kit-price-block {
@@ -1440,11 +1527,45 @@ a {
   }
 
   .kit-price-block span:last-child {
-    font-size: clamp(2.1rem, 12vw, 3rem);
+    font-size: clamp(1.6rem, 8vw, 2rem);
+  }
+
+  .kit-banner {
+    padding: 10px 12px;
+    border-radius: 10px;
+    font-size: 0.68rem;
+    line-height: 1.25;
   }
 
   .feature-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .feature-grid article {
+    padding: 10px 8px;
+    border-radius: 12px;
+    gap: 8px;
+  }
+
+  .feature-icon {
+    min-width: 30px;
+    min-height: 30px;
+  }
+
+  .feature-icon svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .feature-grid strong {
+    font-size: 0.66rem;
+    letter-spacing: 0.04em;
+  }
+
+  .feature-grid span {
+    font-size: 0.66rem;
+    line-height: 1.2;
   }
 
   .checkout-card {
@@ -1564,13 +1685,13 @@ a {
   }
 
   .hero-tags {
-    gap: 8px;
+    gap: 5px;
   }
 
   .hero-tags span {
-    width: 100%;
-    justify-content: flex-start;
-    font-size: 0.76rem;
+    font-size: 0.48rem;
+    min-height: 38px;
+    padding: 6px 4px;
   }
 
   .airdata-kicker {
@@ -1594,14 +1715,20 @@ a {
     font-size: 0.82rem;
   }
 
-  .offer-card {
-    border-radius: 12px;
-    padding: 10px 8px;
+  .card-grid {
     gap: 7px;
   }
 
-  .card-grid {
-    gap: 7px;
+  .airdata-trust {
+    gap: 6px;
+  }
+
+  .airdata-trust article {
+    padding: 7px 5px;
+  }
+
+  .airdata-trust article strong {
+    font-size: 0.52rem;
   }
 
   .offer-badge,
@@ -1623,6 +1750,23 @@ a {
     min-height: 30px;
     font-size: 0.58rem;
     padding: 7px 4px;
+  }
+
+  .kit-box {
+    padding: 12px 10px;
+  }
+
+  .feature-grid {
+    gap: 7px;
+  }
+
+  .feature-grid article {
+    padding: 8px 6px;
+  }
+
+  .feature-grid strong,
+  .feature-grid span {
+    font-size: 0.6rem;
   }
 
   .checkout-card {
@@ -1800,14 +1944,18 @@ a {
     border-radius: 16px;
   }
 
-  .offer-card {
-    padding: 8px 6px;
-    border-radius: 10px;
+  .card-grid {
     gap: 6px;
   }
 
-  .card-grid {
-    gap: 6px;
+  .hero-tags span {
+    font-size: 0.43rem;
+    min-height: 34px;
+    padding: 5px 3px;
+  }
+
+  .airdata-trust article strong {
+    font-size: 0.48rem;
   }
 
   .offer-badge,
@@ -1830,6 +1978,20 @@ a {
     padding: 6px 3px;
     font-size: 0.5rem;
     letter-spacing: 0.01em;
+  }
+
+  .kit-name {
+    font-size: 1rem;
+  }
+
+  .kit-info,
+  .kit-banner {
+    font-size: 0.58rem;
+  }
+
+  .feature-grid strong,
+  .feature-grid span {
+    font-size: 0.54rem;
   }
 
   .checkout-card {
