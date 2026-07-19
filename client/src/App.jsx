@@ -889,9 +889,16 @@ function App() {
             </div>
             <div className="hero-tags">
               <span><UiGlyph type="wifi" />4G+</span>
-              <span><UiGlyph type="shieldCheck" />Couverture stable</span>
-              <span><UiGlyph type="spark" />Activation rapide</span>
+              <span><UiGlyph type="shieldCheck" />Stable</span>
+              <span><UiGlyph type="spark" />Rapide</span>
             </div>
+            <button
+              type="button"
+              className="hero-cta"
+              onClick={() => document.getElementById('offers')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
+            >
+              Voir les forfaits
+            </button>
           </div>
           <div className="hero-visual">
             <div className="hero-panners" aria-hidden="true">
