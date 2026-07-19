@@ -780,6 +780,47 @@ a {
   gap: 10px;
 }
 
+.checkout-final-state {
+  display: grid;
+  gap: 12px;
+  padding: 18px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.checkout-final-icon {
+  display: inline-flex;
+  width: 36px;
+  height: 36px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.checkout-final-copy {
+  display: grid;
+  gap: 8px;
+}
+
+.checkout-final-copy h2 {
+  margin: 0;
+  font-size: clamp(1.2rem, 2.8vw, 1.5rem);
+  color: #f9fbff;
+}
+
+.checkout-final-copy p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.55;
+}
+
+.checkout-final-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .kit-box {
   display: grid;
   gap: 18px;
@@ -1122,6 +1163,14 @@ a {
     align-items: stretch;
   }
 
+  .checkout-final-actions {
+    justify-content: stretch;
+  }
+
+  .checkout-final-actions .button-secondary {
+    width: 100%;
+  }
+
   .button-primary,
   .button-secondary {
     width: 100%;
@@ -1385,9 +1434,14 @@ a {
   .checkout-subtitle,
   .checkout-info,
   .checkout-success,
-  .checkout-confirmation {
+  .checkout-confirmation,
+  .checkout-final-copy p {
     font-size: 0.84rem;
     line-height: 1.45;
+  }
+
+  .checkout-final-copy h2 {
+    font-size: clamp(1rem, 7.5vw, 1.25rem);
   }
 
   .form-field span {
