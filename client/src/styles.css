@@ -124,156 +124,6 @@ a {
   line-height: 1.5;
 }
 
-.airdata-topbar {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: center;
-  gap: 16px;
-  padding: 14px 18px;
-  border-radius: 16px;
-  background: var(--lp-surface-strong);
-  border: 1px solid var(--lp-surface-border);
-}
-
-.airdata-topbar-left .brand-mark-shell {
-  width: 112px;
-  height: 36px;
-}
-
-.airdata-topbar-center {
-  display: grid;
-  gap: 6px;
-  justify-items: center;
-  text-align: center;
-}
-
-.airdata-topbar-center span {
-  font-size: 0.8rem;
-  color: var(--lp-text-soft);
-  letter-spacing: 0.04em;
-}
-
-.airdata-topbar-center div {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.airdata-topbar-center strong {
-  font-size: 0.95rem;
-  letter-spacing: 0.1em;
-  color: var(--lp-text);
-}
-
-.airdata-topbar-action {
-  width: 40px;
-  height: 40px;
-  border: none;
-  border-radius: 12px;
-  background: var(--lp-surface-strong);
-  color: var(--lp-text);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.airdata-topbar-action .ui-glyph {
-  width: 18px;
-  height: 18px;
-}
-
-.hero-panel {
-  display: grid;
-  grid-template-columns: 1.35fr 0.65fr;
-  gap: 24px;
-  padding: 40px;
-  border-radius: 36px;
-  background: var(--lp-surface);
-  border: 1px solid var(--lp-surface-border);
-  box-shadow: 0 40px 90px rgba(0, 0, 0, 0.28);
-}
-
-.hero-copy {
-  display: grid;
-  gap: 22px;
-}
-
-.hero-brand {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  align-items: center;
-}
-
-.hero-title {
-  font-size: clamp(3.4rem, 6vw, 4.8rem);
-  font-weight: 900;
-  letter-spacing: 0.08em;
-}
-
-.hero-subtitle {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 142px;
-  padding: 12px 18px;
-  border-radius: 999px;
-  background: var(--lp-accent);
-  color: var(--lp-text);
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  font-size: 0.95rem;
-}
-
-.hero-brandline {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 12px;
-}
-
-.hero-logo {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 14px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.08);
-  color: #fff;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
-.hero-brand-icons {
-  display: inline-flex;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.brand-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 16px;
-  border-radius: 999px;
-  font-weight: 800;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  background: rgba(255, 255, 255, 0.1);
-}
-
-.brand-badge span {
-  white-space: nowrap;
-}
-
-.brand-badge .ui-glyph {
-  width: 18px;
-  height: 18px;
-}
-
 .brand-mark-shell {
   width: 120px;
   height: 40px;
@@ -315,108 +165,6 @@ a {
   filter: saturate(1.08) contrast(1.06);
 }
 
-.brand-badge-starlink {
-  color: #d8ebff;
-  box-shadow: inset 0 0 0 1px rgba(133, 181, 255, 0.25);
-}
-
-.brand-badge-airtel {
-  color: #ffe3e3;
-  box-shadow: inset 0 0 0 1px rgba(255, 94, 94, 0.3);
-}
-
-.hero-logo-mark {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  background: #ff3030;
-  color: #fff;
-  font-size: 0.95rem;
-  font-weight: 900;
-}
-
-.hero-note {
-  color: var(--lp-text-muted);
-  font-size: 0.85rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.hero-line {
-  display: flex;
-  align-items: baseline;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-
-.hero-line span,
-.hero-line strong {
-  font-size: clamp(2.2rem, 4vw, 3.4rem);
-  line-height: 0.95;
-}
-
-.hero-line strong {
-  color: #ff8f8f;
-}
-
-.hero-text {
-  color: var(--lp-text);
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
-  line-height: 1.2;
-  font-size: 1rem;
-}
-
-.airdata-intro {
-  display: grid;
-  gap: 8px;
-  max-width: 680px;
-}
-
-.airdata-kicker {
-  display: inline-flex;
-  width: fit-content;
-  align-items: center;
-  padding: 7px 12px;
-  border-radius: 999px;
-  background: var(--lp-accent-soft);
-  border: 1px solid var(--lp-accent-border);
-  color: #ffe9e9;
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.airdata-intro h2 {
-  margin: 0;
-  font-size: clamp(2rem, 3.8vw, 3rem);
-  line-height: 1.02;
-  letter-spacing: -0.03em;
-}
-
-.airdata-intro h2 span {
-  color: #ff8f8f;
-}
-
-.airdata-intro p {
-  margin: 0;
-  color: var(--lp-text-soft);
-  max-width: 62ch;
-}
-
-.hero-copy p {
-  margin: 0;
-  max-width: 72ch;
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 1rem;
-}
-
 .hero-cta {
   width: fit-content;
   display: inline-flex;
@@ -432,83 +180,6 @@ a {
   text-transform: uppercase;
   cursor: pointer;
   box-shadow: 0 14px 30px rgba(222, 24, 24, 0.35);
-}
-
-.hero-visual {
-  position: relative;
-  min-height: 320px;
-  border-radius: 28px;
-  background: linear-gradient(180deg, #06131f 0%, #02101c 100%);
-  overflow: hidden;
-}
-
-.hero-visual::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(circle at 50% 32%, rgba(116, 173, 255, 0.28), transparent 30%),
-    linear-gradient(180deg, rgba(4, 12, 26, 0.12), rgba(4, 12, 26, 0));
-  pointer-events: none;
-}
-
-.hero-panners {
-  position: absolute;
-  z-index: 2;
-  left: 16px;
-  right: 16px;
-  bottom: 16px;
-  display: grid;
-  gap: 12px;
-}
-
-.hero-panner {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  width: fit-content;
-  max-width: 100%;
-  padding: 10px 14px;
-  border-radius: 999px;
-  background: linear-gradient(140deg, rgba(7, 14, 33, 0.85), rgba(17, 31, 70, 0.72));
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: #f2f8ff;
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  backdrop-filter: blur(4px);
-}
-
-.hero-panner:nth-child(2) {
-  background: linear-gradient(140deg, rgba(34, 7, 10, 0.84), rgba(88, 17, 20, 0.72));
-}
-
-.hero-panner span {
-  white-space: nowrap;
-  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
-}
-
-.hero-panner .ui-glyph {
-  width: 16px;
-  height: 16px;
-}
-
-.hero-scene {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.hero-scene rect,
-.hero-scene circle,
-.hero-scene path,
-.hero-scene g {
-  mix-blend-mode: screen;
-}
-
-.hero-scene path {
-  stroke-linecap: round;
 }
 
 .card-grid {
@@ -1149,174 +820,6 @@ a {
   justify-content: flex-end;
 }
 
-.kit-box {
-  display: grid;
-  gap: 18px;
-  padding: 30px;
-  border-radius: 28px;
-  background: linear-gradient(180deg, rgba(15, 24, 50, 0.98), rgba(9, 14, 29, 0.98));
-  border: 2px solid rgba(222, 24, 24, 0.68);
-  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.25);
-}
-
-.kit-hero {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  flex-wrap: wrap;
-}
-
-.kit-tag {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px 16px;
-  border-radius: 999px;
-  background: var(--lp-accent);
-  color: var(--lp-text);
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-}
-
-.kit-box small {
-  display: inline-flex;
-  padding: 8px 14px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.08);
-  color: #fff;
-  font-weight: 700;
-  text-transform: uppercase;
-  font-size: 0.9rem;
-}
-
-.kit-details {
-  display: grid;
-  gap: 10px;
-}
-
-.kit-name {
-  font-size: clamp(2rem, 3vw, 2.8rem);
-  font-weight: 900;
-  letter-spacing: -0.04em;
-}
-
-.kit-info {
-  display: grid;
-  gap: 6px;
-  color: rgba(255, 255, 255, 0.8);
-  font-weight: 600;
-}
-
-.kit-price-block {
-  display: flex;
-  align-items: baseline;
-  gap: 12px;
-  justify-content: flex-end;
-}
-
-.kit-price-block span:first-child {
-  color: rgba(255, 255, 255, 0.78);
-  font-size: 1rem;
-}
-
-.kit-price-block span:last-child {
-  font-size: 3.8rem;
-  font-weight: 900;
-  color: #ff8f8f;
-}
-
-.kit-banner {
-  padding: 14px 16px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.08);
-  color: #fff;
-  font-weight: 900;
-  text-align: center;
-}
-
-.feature-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(180px, 1fr));
-  gap: 18px;
-}
-
-.feature-grid article {
-  display: flex;
-  align-items: flex-start;
-  gap: 14px;
-  padding: 18px 20px;
-  border-radius: 24px;
-  background: var(--lp-surface);
-  border: 1px solid var(--lp-surface-border);
-}
-
-.feature-icon {
-  display: inline-flex;
-  min-width: 42px;
-  min-height: 42px;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.12);
-  color: #ff8f8f;
-}
-
-.feature-icon svg {
-  width: 22px;
-  height: 22px;
-  fill: currentColor;
-}
-
-.feature-grid strong {
-  display: block;
-  font-size: 0.95rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.feature-grid span {
-  color: var(--lp-text-soft);
-  font-size: 0.95rem;
-}
-
-.cta-strip {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  padding: 18px 24px;
-  background: var(--lp-surface);
-  border: 1px solid var(--lp-surface-border);
-  border-radius: 28px;
-}
-
-.cta-copy span {
-  display: block;
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  color: #ff8f8f;
-}
-
-.cta-copy strong {
-  display: block;
-  color: #fff;
-  margin-top: 4px;
-}
-
-.cta-strip a {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 14px 24px;
-  border-radius: 999px;
-  background: var(--lp-accent);
-  color: var(--lp-text);
-  font-weight: 900;
-  text-decoration: none;
-  letter-spacing: 0.08em;
-}
-
 .message-block {
   width: min(680px, 100%);
   margin: 140px auto;
@@ -1360,10 +863,6 @@ a {
 }
 
 @media (max-width: 1080px) {
-  .feature-grid {
-    grid-template-columns: 1fr;
-  }
-
   .airdata-trust {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1538,11 +1037,6 @@ a {
     width: 100%;
   }
 
-  .cta-strip {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
   .checkout-page-shell {
     padding: 18px 12px 24px;
   }
@@ -1692,16 +1186,6 @@ a {
     border-radius: 10px;
   }
 
-  .kit-box {
-    padding: 18px 14px;
-    border-radius: 20px;
-  }
-
-  .kit-banner {
-    border-radius: 14px;
-    font-size: 0.82rem;
-    line-height: 1.4;
-  }
 }
 
 @media (max-width: 360px) {
@@ -1711,27 +1195,6 @@ a {
 
   .poster-shell {
     gap: 12px;
-  }
-
-  .airdata-topbar {
-    border-radius: 14px;
-    padding: 10px 8px;
-  }
-
-  .airdata-topbar-left .brand-mark-shell {
-    width: 86px;
-    height: 28px;
-  }
-
-  .hero-panel {
-    padding: 14px 10px;
-    border-radius: 16px;
-    gap: 14px;
-  }
-
-  .hero-title {
-    font-size: clamp(1.8rem, 12vw, 2.2rem);
-    letter-spacing: 0.04em;
   }
 
 
@@ -1760,31 +1223,6 @@ a {
   .airdata-trust article strong {
     font-size: 0.48rem;
   }
-  .hero-scene {
-    opacity: 0.28;
-    transform: scale(1.12) translateY(8px);
-  }
-
-  .hero-visual::after {
-    left: 10px;
-    right: 10px;
-    bottom: 10px;
-    min-height: 28px;
-    font-size: 0.56rem;
-    letter-spacing: 0.1em;
-  }
-
-  .hero-scene {
-    opacity: 0.2;
-    transform: scale(1.16) translateY(10px);
-  }
-
-  .hero-visual::after {
-    min-height: 24px;
-    font-size: 0.5rem;
-    letter-spacing: 0.08em;
-  }
-
   .card-grid {
     gap: 6px;
   }
@@ -1900,54 +1338,4 @@ a {
     letter-spacing: 0.04em;
   }
 
-  .kit-box {
-    padding: 14px 10px;
-    border-radius: 16px;
-    gap: 12px;
-  }
-
-  .kit-tag,
-  .kit-box small {
-    font-size: 0.7rem;
-    padding: 7px 10px;
-  }
-
-  .kit-name {
-    font-size: clamp(1.2rem, 8vw, 1.5rem);
-  }
-
-  .kit-price-block span:last-child {
-    font-size: clamp(1.6rem, 12vw, 2rem);
-  }
-
-  .kit-banner {
-    padding: 10px 12px;
-    border-radius: 10px;
-    font-size: 0.74rem;
-  }
-
-  .feature-grid article {
-    padding: 12px 10px;
-    border-radius: 16px;
-    gap: 10px;
-  }
-
-  .feature-icon {
-    min-width: 34px;
-    min-height: 34px;
-  }
-
-  .feature-icon svg {
-    width: 18px;
-    height: 18px;
-  }
-
-  .feature-grid strong {
-    font-size: 0.78rem;
-    letter-spacing: 0.05em;
-  }
-
-  .feature-grid span {
-    font-size: 0.82rem;
-  }
 }

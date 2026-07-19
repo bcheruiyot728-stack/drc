@@ -20,38 +20,6 @@ const apiFetch = async (path, options) => {
   return fetch(`${FALLBACK_API_BASE_URL}${path}`, options);
 };
 
-const tierStyles = {
-  basic: 'card-basic',
-  standard: 'card-standard',
-  popular: 'card-popular',
-  pro: 'card-pro',
-  max: 'card-max',
-  unlimited: 'card-unlimited'
-};
-
-const iconMap = {
-  speed: (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M12 4l1.45 5.4 5.71.83-4.13 3.73 1.03 5.66L12 16.7l-5.06 2.12 1.04-5.66L3.84 10.23l5.7-.83L12 4z" />
-    </svg>
-  ),
-  globe: (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M12 2a10 10 0 100 20 10 10 0 000-20zm0 2a7.96 7.96 0 017.86 6H12V4zm-2 0v6H4.14A7.96 7.96 0 0110 4zm-5 8a8.02 8.02 0 01.16-1.76H10v3.52H5.16A8.02 8.02 0 015 12zm2.09 4.1L5 19.86A7.96 7.96 0 0110 20v-3.9H7.09zm2.91 0V20a7.96 7.96 0 012 0v-3.9H10zm4.91 0H14V20a7.96 7.96 0 012-.14l-1.82-1.76zM14 12v-3.52h4.84A7.96 7.96 0 0114 4v8zm2.91-8.1L19 4.14A7.96 7.96 0 0114 4v-.1z" />
-    </svg>
-  ),
-  shield: (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M12 2l7 4v6.5c0 5.25-3.67 9.76-7 10.5-3.33-.74-7-5.25-7-10.5V6l7-4z" />
-    </svg>
-  ),
-  wrench: (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M21.7 5.3l-3-3c-.4-.4-1-.4-1.4 0l-2.5 2.5c-.2.2-.3.4-.3.7l-.3 3.3c0 .4.3.7.7.7l3.3-.3c.3 0 .5-.1.7-.3l2.5-2.5c.4-.4.4-1 0-1.4zM8.2 12.4c.8.8 2 .8 2.8 0l1.4-1.4 2.5 2.5-1.4 1.4c-.8.8-.8 2 0 2.8l2.8 2.8-3.5 3.5-2.8-2.8c-.8-.8-2-.8-2.8 0l-1.4 1.4-3.5-3.5 1.4-1.4c.8-.8.8-2 0-2.8l-2.8-2.8 3.5-3.5 2.8 2.8z" />
-    </svg>
-  )
-};
-
 const uiIconMap = {
   mobile: (
     <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -78,20 +46,9 @@ const uiIconMap = {
       <path d="M13 2l-2 6h4l-6 14 2-8H7l6-12z" />
     </svg>
   ),
-  wifi: (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M12 18.5a1.5 1.5 0 1 0 0 .01V18.5zM2.1 9.58 3.5 11A12 12 0 0 1 20.5 11l1.4-1.42a14 14 0 0 0-19.8 0zm3.6 3.62 1.42 1.4a7 7 0 0 1 9.76 0l1.42-1.4a9 9 0 0 0-12.6 0zm3.6 3.6 1.4 1.42a2 2 0 0 1 2.8 0l1.4-1.42a4 4 0 0 0-5.6 0z" />
-    </svg>
-  ),
   refresh: (
     <svg viewBox="0 0 24 24" aria-hidden="true">
       <path d="M17.65 6.35A7.95 7.95 0 0 0 12 4V1L7 6l5 5V7a5 5 0 1 1-4.9 6H5.02A7 7 0 1 0 17.65 6.35z" />
-    </svg>
-  ),
-  starlink: (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M3 17.5 15.8 4H21L8.2 17.5z" />
-      <path d="M3 20h5.2L21 6.7V12L12.7 20z" />
     </svg>
   ),
   airtel: (
@@ -100,10 +57,6 @@ const uiIconMap = {
     </svg>
   )
 };
-
-function Icon({ type }) {
-  return <span className="feature-icon">{iconMap[type]}</span>;
-}
 
 function UiGlyph({ type }) {
   return <span className="ui-glyph">{uiIconMap[type]}</span>;
@@ -811,8 +764,6 @@ function App() {
     );
   }
 
-  const recommendedOffer = data.offres.find((offre) => offre.badge) || data.offres[0];
-
   return (
     <main className="page-shell">
       <div className="poster-shell poster-shell-simple">
@@ -846,7 +797,7 @@ function App() {
 
         <section className="card-grid" id="offers">
           {data.offres.map((offre) => (
-            <article key={offre.id} className={`offer-card ${tierStyles[offre.tier] || ''}`}>
+            <article key={offre.id} className="offer-card">
               <div className="offer-top">
                 <span className="offer-charge">{offre.tier === 'pro' || offre.tier === 'max' || offre.tier === 'unlimited' ? '4G+' : '4G'}</span>
                 {offre.badge && <span className={`offer-badge ${offre.badgeClass}`}>{offre.badge}</span>}
