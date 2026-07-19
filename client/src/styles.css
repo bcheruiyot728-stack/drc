@@ -640,6 +640,46 @@ a {
   color: #1d73d8;
 }
 
+.checkout-page-shell .form-field {
+  color: #4e5663;
+}
+
+.checkout-page-shell .form-field span {
+  color: #5f6774;
+}
+
+.checkout-page-shell .form-field input {
+  border: 1px solid #d5dbe5;
+  background: #ffffff;
+  color: #2f3848;
+}
+
+.checkout-page-shell .form-field input::placeholder {
+  color: #9aa3b2;
+}
+
+.checkout-page-shell .phone-field-row {
+  border: 2px solid #1d73d8;
+  background: #ffffff;
+}
+
+.checkout-page-shell .phone-field-row:focus-within {
+  border-color: #1d73d8;
+  box-shadow: 0 0 0 3px rgba(29, 115, 216, 0.18);
+}
+
+.checkout-page-shell .checkout-info,
+.checkout-page-shell .checkout-success,
+.checkout-page-shell .checkout-confirmation {
+  border: 1px solid #d5dbe5;
+  background: #f7f9fc;
+  color: #3f4858;
+}
+
+.checkout-page-shell .checkout-error {
+  color: #b42318;
+}
+
 .checkout-card {
   padding: 36px;
   border-radius: 36px;
@@ -851,7 +891,7 @@ a {
   background: #d9d9dd;
   color: #f8f8f8;
   letter-spacing: 0.04em;
-  font-size: 2rem;
+  font-size: 1.2rem;
   font-weight: 700;
 }
 
