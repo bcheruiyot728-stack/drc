@@ -105,3 +105,19 @@ Le fichier `render.yaml` est inclus pour declarer le service backend avec:
 - `healthCheckPath: /api/offres`
 
 Important: verifier dans Render que les variables d'environnement Telegram sont correctes selon vos besoins.
+
+### Redeploiement cloud 100% automatique (sans clic dashboard)
+
+Le workflow `.github/workflows/cloud-auto-redeploy.yml` declenche automatiquement les redeploiements Vercel et Render apres chaque push sur `main` via deploy hooks.
+
+Ajouter ces secrets GitHub (`Settings > Secrets and variables > Actions`):
+
+- `RENDER_DEPLOY_HOOK_URL`: URL du deploy hook Render.
+- `VERCEL_DEPLOY_HOOK_URL`: URL du deploy hook Vercel.
+- `BACKEND_HEALTH_URL`: ex `https://drc-co0e.onrender.com/api/offres`
+- `FRONTEND_HEALTH_URL`: ex `https://starlinknet.vercel.app/`
+
+Resultat:
+
+- Push sur `main` -> trigger Render + Vercel
+- Workflow attend ensuite que backend/frontend repondent HTTP `200`
