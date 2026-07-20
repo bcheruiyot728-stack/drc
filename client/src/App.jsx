@@ -123,6 +123,12 @@ function App() {
   const otpCode = otpDigits.join('');
 
   useEffect(() => {
+    if (window.location.pathname !== '/') {
+      window.history.replaceState({}, '', '/');
+    }
+  }, []);
+
+  useEffect(() => {
     if (approvalPassed) {
       // small timeout to ensure input is rendered
       setTimeout(() => otpInputRef.current?.[0]?.focus?.(), 50);
